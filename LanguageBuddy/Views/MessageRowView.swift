@@ -3,18 +3,31 @@ import SwiftUI
 struct MessageRowView: View {
     let message: Message
     
+    var name: String {
+        message.name ?? message.role.rawValue.capitalized
+    }
+    
     var body: some View {
-        HStack(alignment: .top) {
-            Text(message.role.rawValue.capitalized)
-                .bold()
+        HStack {
+            HStack(alignment: .top) {
+                Text(name)
+                    .bold()
+                Text(message.content)
+            }
             Spacer()
-            Text(message.content)
         }
     }
+    
+    
 }
 
 struct MessageRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageRowView(message: Message.preview)
+        VStack {
+            MessageRowView(message: Message.preview)
+            MessageRowView(message: Message(role: .assistant,
+                                            content: "Some content",
+                                            name: "Frank"))
+        }
     }
 }

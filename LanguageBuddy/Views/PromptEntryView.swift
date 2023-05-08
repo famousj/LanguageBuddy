@@ -5,7 +5,7 @@ struct PromptEntryView: View {
     var body: some View {
         ZStack(alignment: .trailing) {
             TextField("Your question here...", text: $prompt)
-                .frame(maxWidth: .infinity)
+                .padding(15)
                 .border(Color.gray, width: 2)
                 .cornerRadius(4)
             Image(systemName: "paperplane")
@@ -20,5 +20,7 @@ struct PromptEntryView: View {
 struct PromptEntryView_Previews: PreviewProvider {
     static var previews: some View {
         PromptEntryView()
+            .previewLayout(.fixed(width: 500, height: 60))
+
     }
 }

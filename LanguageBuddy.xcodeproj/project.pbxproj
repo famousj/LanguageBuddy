@@ -23,6 +23,7 @@
 		D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BDA2A091702000CCEE3 /* Message+Preview.swift */; };
 		D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BDC2A09188E000CCEE3 /* String+Random.swift */; };
 		D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */; };
+		D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		D8E51BDA2A091702000CCEE3 /* Message+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Preview.swift"; sourceTree = "<group>"; };
 		D8E51BDC2A09188E000CCEE3 /* String+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
 		D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				D8E51BA22A090E93000CCEE3 /* ContentView.swift */,
 				D8E51BD82A0916CD000CCEE3 /* MessageRowView.swift */,
 				D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */,
+				D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D8E51BD92A0916CD000CCEE3 /* MessageRowView.swift in Sources */,
 				D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */,
 				D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */,
+				D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */,
 				D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

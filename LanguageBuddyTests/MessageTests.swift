@@ -16,6 +16,10 @@ final class MessageTests: XCTestCase {
             }
             
             XCTAssertEqual(message.content, role.rawValue)
+            
+            if message.name != nil {
+                XCTAssertEqual(message.name, role.rawValue)
+            }
         }
     }
 }

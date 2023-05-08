@@ -1,7 +1,8 @@
 [
     {
         "role": "system",
-        "content": "system"
+        "content": "system",
+        "name": "system"
     },
     {
         "role": "user",

@@ -1,14 +1,12 @@
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    let messages: [Message]
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            MessagesView(messages: messages)
+            PromptEntryView()
         }
         .padding()
     }
@@ -16,6 +14,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        ContentView(messages: Message.previewArray(count: 100))
+        ContentView(messages: Message.previewArray(count: 100))
     }
 }

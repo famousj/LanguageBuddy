@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
-		D8E51BA32A090E93000CCEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* ContentView.swift */; };
+		D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* PromptView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
 		D8E51BA82A090E95000CCEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA72A090E95000CCEE3 /* Preview Assets.xcassets */; };
 		D8E51BB22A090E95000CCEE3 /* LanguageBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */; };
@@ -28,6 +28,7 @@
 		D8E51BE72A09499F000CCEE3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE62A09499F000CCEE3 /* AppState.swift */; };
 		D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */; };
 		D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */; };
+		D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEE2A095042000CCEE3 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,7 @@
 /* Begin PBXFileReference section */
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
-		D8E51BA22A090E93000CCEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D8E51BA22A090E93000CCEE3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
 		D8E51BA42A090E95000CCEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8E51BA72A090E95000CCEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8E51BAD2A090E95000CCEE3 /* LanguageBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LanguageBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +73,7 @@
 		D8E51BE62A09499F000CCEE3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModeling.swift; sourceTree = "<group>"; };
 		D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppViewModel.swift; sourceTree = "<group>"; };
+		D8E51BEE2A095042000CCEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,10 +169,11 @@
 		D8E51BCA2A090F13000CCEE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D8E51BA22A090E93000CCEE3 /* ContentView.swift */,
+				D8E51BA22A090E93000CCEE3 /* PromptView.swift */,
 				D8E51BD82A0916CD000CCEE3 /* MessageRowView.swift */,
 				D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */,
 				D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */,
+				D8E51BEE2A095042000CCEE3 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,9 +369,10 @@
 			files = (
 				D8E51BE42A09488F000CCEE3 /* AppViewModel.swift in Sources */,
 				D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */,
+				D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */,
 				D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */,
 				D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */,
-				D8E51BA32A090E93000CCEE3 /* ContentView.swift in Sources */,
+				D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */,
 				D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */,
 				D8E51BD92A0916CD000CCEE3 /* MessageRowView.swift in Sources */,
 				D8E51BE72A09499F000CCEE3 /* AppState.swift in Sources */,

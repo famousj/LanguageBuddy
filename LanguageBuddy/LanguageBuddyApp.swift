@@ -4,7 +4,7 @@ import SwiftUI
 struct LanguageBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(messages: [])
+            ContentView(appViewModel: AppViewModel())
         }
     }
 }

@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct ContentView: View {
-    let messages: [Message]
+struct ContentView<AppViewModel>: View where AppViewModel: AppViewModeling {
+    @ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
         VStack {
-            MessagesView(messages: messages)
+            MessagesView(messages: appViewModel.messages)
             PromptEntryView()
         }
         .padding()
@@ -14,8 +14,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let appViewModel = FakeAppViewModel()
         
-        ContentView(messages: Message.previewArray(count: 100))
-        ContentView(messages: Message.previewArray(count: 100))
+        return ContentView(appViewModel: appViewModel)
     }
 }

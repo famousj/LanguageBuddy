@@ -1,0 +1,14 @@
+[
+    {
+        "role": "system",
+        "content": "system"
+    },
+    {
+        "role": "user",
+        "content": "user"
+    },
+    {
+        "role": "assistant",
+        "content": "assistant"
+    }
+]

@@ -1,7 +1,3 @@
-// To parse the JSON, add this file to your project and do:
-//
-//   let message = try? newJSONDecoder().decode(Message.self, from: jsonData)
-
 import Foundation
 
 struct Message {

@@ -18,6 +18,7 @@ extension Message: Codable {
 }
 
 extension Message: Identifiable {}
+extension Message: Hashable {}
 
 extension Message {
     init(role: Role, content: String, name: String?) {

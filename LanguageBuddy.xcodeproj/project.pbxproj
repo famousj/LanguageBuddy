@@ -14,6 +14,8 @@
 		D8E51BB22A090E95000CCEE3 /* LanguageBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */; };
 		D8E51BBC2A090E95000CCEE3 /* LanguageBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BBB2A090E95000CCEE3 /* LanguageBuddyUITests.swift */; };
 		D8E51BBE2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BBD2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift */; };
+		D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BCC2A090F78000CCEE3 /* Role.swift */; };
+		D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BCD2A090F78000CCEE3 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		D8E51BB72A090E95000CCEE3 /* LanguageBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LanguageBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BBB2A090E95000CCEE3 /* LanguageBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyUITests.swift; sourceTree = "<group>"; };
 		D8E51BBD2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D8E51BCC2A090F78000CCEE3 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		D8E51BCD2A090F78000CCEE3 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 		D8E51BCB2A090F42000CCEE3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D8E51BCD2A090F78000CCEE3 /* Message.swift */,
+				D8E51BCC2A090F78000CCEE3 /* Role.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,7 +280,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E51BA32A090E93000CCEE3 /* ContentView.swift in Sources */,
+				D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */,
 				D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */,
+				D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

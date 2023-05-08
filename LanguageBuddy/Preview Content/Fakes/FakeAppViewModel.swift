@@ -7,4 +7,7 @@ class FakeAppViewModel: AppViewModeling {
         Array(0...100)
             .map { Message(role: Role.allCases.randomElement()!, content: "\($0)", name: nil) }
     }
+    
+    func loginRequested() {}
+    
 }

@@ -21,7 +21,6 @@
 		D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */; };
 		D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8882A0A651400ECCA17 /* URLSessionable.swift */; };
 		D814E88F2A0A81D600ECCA17 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E88E2A0A81D600ECCA17 /* Token.swift */; };
-		D814E8922A0A829700ECCA17 /* token.json in Resources */ = {isa = PBXBuildFile; fileRef = D814E8912A0A829700ECCA17 /* token.json */; };
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
 		D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* PromptView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
@@ -79,7 +78,6 @@
 		D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorDetails.swift; sourceTree = "<group>"; };
 		D814E8882A0A651400ECCA17 /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
 		D814E88E2A0A81D600ECCA17 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		D814E8912A0A829700ECCA17 /* token.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = token.json; sourceTree = "<group>"; };
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
 		D8E51BA22A090E93000CCEE3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 		D814E8902A0A828100ECCA17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D814E8912A0A829700ECCA17 /* token.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -406,7 +403,6 @@
 			files = (
 				D8E51BA82A090E95000CCEE3 /* Preview Assets.xcassets in Resources */,
 				D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */,
-				D814E8922A0A829700ECCA17 /* token.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

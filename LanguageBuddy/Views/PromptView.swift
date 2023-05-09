@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PromptView<AppViewModel>: View where AppViewModel: AppViewModeling {
+struct PromptView<AppViewModel>: View where AppViewModel: AppViewModelable {
     @ObservedObject var appViewModel: AppViewModel
     
     var body: some View {

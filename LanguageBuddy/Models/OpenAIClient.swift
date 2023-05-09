@@ -1,6 +1,6 @@
 import Foundation
 
-struct OpenAIClient: OpenAIClienting {
+struct OpenAIClient: OpenAIClientable {
     var clientCredential: String {
         // TODO: Use your own key here
         "OPENAI_API_KEY"
@@ -16,7 +16,7 @@ struct OpenAIClient: OpenAIClienting {
     
     // TODO: Test me
     func sendChatRequest(messages: [Message],
-                         urlSession: URLSessioning = URLSession.shared as! URLSessioning) async throws -> Result<ChatCompletionResponse, OpenAIError> {
+                         urlSession: URLSessionable = URLSession.shared as! URLSessionable) async throws -> Result<ChatCompletionResponse, OpenAIError> {
         var urlRequest = OpenAIRequest.chatCompletions.urlRequest
         
         urlRequest.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")

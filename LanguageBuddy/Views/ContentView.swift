@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView<AppViewModel>: View where AppViewModel: AppViewModeling {
+struct ContentView<AppViewModel>: View where AppViewModel: AppViewModelable {
     @ObservedObject var appViewModel: AppViewModel
 
     var body: some View {

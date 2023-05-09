@@ -1,5 +1,5 @@
 import Foundation
 
-protocol AppViewModeling: ObservableObject {
+protocol AppViewModelable: ObservableObject {
     var messages: [Message] { get }    
 }

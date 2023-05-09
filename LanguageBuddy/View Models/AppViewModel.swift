@@ -1,11 +1,11 @@
 import Foundation
 
-class AppViewModel: ObservableObject, AppViewModeling {
+class AppViewModel: ObservableObject, AppViewModelable {
     @Published var messages = [Message]()
     
-    private let openAIClient: OpenAIClienting
+    private let openAIClient: OpenAIClientable
     
-    init(openAIClient: OpenAIClienting = OpenAIClient()) {
+    init(openAIClient: OpenAIClientable = OpenAIClient()) {
         self.openAIClient = openAIClient
     }    
 }

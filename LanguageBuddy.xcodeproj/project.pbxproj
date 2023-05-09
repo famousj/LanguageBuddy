@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */; };
 		D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */; };
-		D814E8712A0A29B300ECCA17 /* OpenAIClienting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8702A0A29B300ECCA17 /* OpenAIClienting.swift */; };
+		D814E8712A0A29B300ECCA17 /* OpenAIClientable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */; };
 		D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */; };
 		D814E8752A0A35B500ECCA17 /* ChatCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */; };
 		D814E8772A0A362300ECCA17 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8762A0A362300ECCA17 /* Choice.swift */; };
@@ -19,7 +19,7 @@
 		D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */; };
 		D814E8832A0A41C000ECCA17 /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8822A0A41C000ECCA17 /* JSONNull.swift */; };
 		D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */; };
-		D814E8892A0A651400ECCA17 /* URLSessioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8882A0A651400ECCA17 /* URLSessioning.swift */; };
+		D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8882A0A651400ECCA17 /* URLSessionable.swift */; };
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
 		D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* PromptView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 		D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */; };
 		D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */; };
 		D8E51BE42A09488F000CCEE3 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE32A09488F000CCEE3 /* AppViewModel.swift */; };
-		D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */; };
+		D8E51BEA2A0949FA000CCEE3 /* AppViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE92A0949FA000CCEE3 /* AppViewModelable.swift */; };
 		D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */; };
 		D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEE2A095042000CCEE3 /* ContentView.swift */; };
 		D8E51BF12A095981000CCEE3 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF02A095981000CCEE3 /* OpenAIClient.swift */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientTests.swift; sourceTree = "<group>"; };
 		D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionRequest.swift; sourceTree = "<group>"; };
-		D814E8702A0A29B300ECCA17 /* OpenAIClienting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClienting.swift; sourceTree = "<group>"; };
+		D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientable.swift; sourceTree = "<group>"; };
 		D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequest.swift; sourceTree = "<group>"; };
 		D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionResponse.swift; sourceTree = "<group>"; };
 		D814E8762A0A362300ECCA17 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorResponse.swift; sourceTree = "<group>"; };
 		D814E8822A0A41C000ECCA17 /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorDetails.swift; sourceTree = "<group>"; };
-		D814E8882A0A651400ECCA17 /* URLSessioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessioning.swift; sourceTree = "<group>"; };
+		D814E8882A0A651400ECCA17 /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
 		D8E51BA22A090E93000CCEE3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptEntryView.swift; sourceTree = "<group>"; };
 		D8E51BE32A09488F000CCEE3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
-		D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModeling.swift; sourceTree = "<group>"; };
+		D8E51BE92A0949FA000CCEE3 /* AppViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelable.swift; sourceTree = "<group>"; };
 		D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppViewModel.swift; sourceTree = "<group>"; };
 		D8E51BEE2A095042000CCEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D8E51BF02A095981000CCEE3 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
@@ -264,9 +264,9 @@
 		D8E51BE82A0949E2000CCEE3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */,
-				D814E8702A0A29B300ECCA17 /* OpenAIClienting.swift */,
-				D814E8882A0A651400ECCA17 /* URLSessioning.swift */,
+				D8E51BE92A0949FA000CCEE3 /* AppViewModelable.swift */,
+				D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */,
+				D814E8882A0A651400ECCA17 /* URLSessionable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 				D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */,
 				D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */,
 				D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */,
-				D814E8892A0A651400ECCA17 /* URLSessioning.swift in Sources */,
+				D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */,
 				D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */,
 				D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */,
 				D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */,
@@ -437,9 +437,9 @@
 				D8E51BD92A0916CD000CCEE3 /* MessageRowView.swift in Sources */,
 				D814E8832A0A41C000ECCA17 /* JSONNull.swift in Sources */,
 				D814E87D2A0A37A300ECCA17 /* OpenAIRequest+URL.swift in Sources */,
-				D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */,
+				D8E51BEA2A0949FA000CCEE3 /* AppViewModelable.swift in Sources */,
 				D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */,
-				D814E8712A0A29B300ECCA17 /* OpenAIClienting.swift in Sources */,
+				D814E8712A0A29B300ECCA17 /* OpenAIClientable.swift in Sources */,
 				D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */,
 				D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */,
 				D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */,

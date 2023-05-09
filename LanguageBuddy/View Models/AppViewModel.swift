@@ -2,15 +2,10 @@ import Foundation
 
 class AppViewModel: ObservableObject, AppViewModeling {
     @Published var messages = [Message]()
-    @Published var appState: AppState = .notLoggedIn
     
-    private let openAISession: OpenAISessioning
+    private let openAISession: OpenAIRequesting
     
-    init(openAISession: OpenAISessioning = OpenAISession()) {
+    init(openAISession: OpenAIRequesting = OpenAIRequester()) {
         self.openAISession = openAISession
-    }
-    
-    func loginRequested() {
-        openAISession.loginRequested()
-    }
+    }    
 }

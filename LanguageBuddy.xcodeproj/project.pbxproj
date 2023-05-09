@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D814E86D2A09976D00ECCA17 /* OpenAIRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86C2A09976D00ECCA17 /* OpenAIRequesterTests.swift */; };
+		D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */; };
+		D814E8712A0A29B300ECCA17 /* OpenAISessioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8702A0A29B300ECCA17 /* OpenAISessioning.swift */; };
+		D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */; };
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
 		D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* PromptView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
@@ -25,14 +29,13 @@
 		D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */; };
 		D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */; };
 		D8E51BE42A09488F000CCEE3 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE32A09488F000CCEE3 /* AppViewModel.swift */; };
-		D8E51BE72A09499F000CCEE3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE62A09499F000CCEE3 /* AppState.swift */; };
 		D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */; };
 		D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */; };
 		D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BEE2A095042000CCEE3 /* ContentView.swift */; };
-		D8E51BF12A095981000CCEE3 /* OpenAISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF02A095981000CCEE3 /* OpenAISession.swift */; };
-		D8E51BF32A095A19000CCEE3 /* OpenAISessioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF22A095A19000CCEE3 /* OpenAISessioning.swift */; };
+		D8E51BF12A095981000CCEE3 /* OpenAIRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF02A095981000CCEE3 /* OpenAIRequester.swift */; };
+		D8E51BF32A095A19000CCEE3 /* OpenAIRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF22A095A19000CCEE3 /* OpenAIRequesting.swift */; };
 		D8E51BF52A095AE2000CCEE3 /* AppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF42A095AE2000CCEE3 /* AppViewModelTests.swift */; };
-		D8E51BF82A095B4D000CCEE3 /* FakeOpenAISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF72A095B4D000CCEE3 /* FakeOpenAISession.swift */; };
+		D8E51BF82A095B4D000CCEE3 /* FakeOpenAIRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BF72A095B4D000CCEE3 /* FakeOpenAIRequester.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D814E86C2A09976D00ECCA17 /* OpenAIRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequesterTests.swift; sourceTree = "<group>"; };
+		D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionRequest.swift; sourceTree = "<group>"; };
+		D814E8702A0A29B300ECCA17 /* OpenAISessioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISessioning.swift; sourceTree = "<group>"; };
+		D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequest.swift; sourceTree = "<group>"; };
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
 		D8E51BA22A090E93000CCEE3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -74,14 +81,13 @@
 		D8E51BDE2A091A22000CCEE3 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		D8E51BE02A092616000CCEE3 /* PromptEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptEntryView.swift; sourceTree = "<group>"; };
 		D8E51BE32A09488F000CCEE3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
-		D8E51BE62A09499F000CCEE3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModeling.swift; sourceTree = "<group>"; };
 		D8E51BEC2A094BF2000CCEE3 /* FakeAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppViewModel.swift; sourceTree = "<group>"; };
 		D8E51BEE2A095042000CCEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D8E51BF02A095981000CCEE3 /* OpenAISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISession.swift; sourceTree = "<group>"; };
-		D8E51BF22A095A19000CCEE3 /* OpenAISessioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISessioning.swift; sourceTree = "<group>"; };
+		D8E51BF02A095981000CCEE3 /* OpenAIRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequester.swift; sourceTree = "<group>"; };
+		D8E51BF22A095A19000CCEE3 /* OpenAIRequesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequesting.swift; sourceTree = "<group>"; };
 		D8E51BF42A095AE2000CCEE3 /* AppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelTests.swift; sourceTree = "<group>"; };
-		D8E51BF72A095B4D000CCEE3 /* FakeOpenAISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeOpenAISession.swift; sourceTree = "<group>"; };
+		D8E51BF72A095B4D000CCEE3 /* FakeOpenAIRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeOpenAIRequester.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 				D8E51BF42A095AE2000CCEE3 /* AppViewModelTests.swift */,
 				D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */,
 				D8E51BD32A0910A3000CCEE3 /* MessageTests.swift */,
+				D814E86C2A09976D00ECCA17 /* OpenAIRequesterTests.swift */,
 			);
 			path = LanguageBuddyTests;
 			sourceTree = "<group>";
@@ -193,7 +200,8 @@
 			children = (
 				D8E51BE52A094990000CCEE3 /* Enums */,
 				D8E51BCD2A090F78000CCEE3 /* Message.swift */,
-				D8E51BF02A095981000CCEE3 /* OpenAISession.swift */,
+				D8E51BF02A095981000CCEE3 /* OpenAIRequester.swift */,
+				D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				D8E51BCC2A090F78000CCEE3 /* Role.swift */,
-				D8E51BE62A09499F000CCEE3 /* AppState.swift */,
+				D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -235,7 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */,
-				D8E51BF22A095A19000CCEE3 /* OpenAISessioning.swift */,
+				D8E51BF22A095A19000CCEE3 /* OpenAIRequesting.swift */,
+				D814E8702A0A29B300ECCA17 /* OpenAISessioning.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -251,7 +260,7 @@
 		D8E51BF62A095B3E000CCEE3 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
-				D8E51BF72A095B4D000CCEE3 /* FakeOpenAISession.swift */,
+				D8E51BF72A095B4D000CCEE3 /* FakeOpenAIRequester.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -392,17 +401,19 @@
 				D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */,
 				D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */,
 				D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */,
+				D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */,
 				D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */,
 				D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */,
-				D8E51BF12A095981000CCEE3 /* OpenAISession.swift in Sources */,
+				D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */,
+				D8E51BF12A095981000CCEE3 /* OpenAIRequester.swift in Sources */,
 				D8E51BD92A0916CD000CCEE3 /* MessageRowView.swift in Sources */,
-				D8E51BE72A09499F000CCEE3 /* AppState.swift in Sources */,
 				D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */,
 				D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */,
+				D814E8712A0A29B300ECCA17 /* OpenAISessioning.swift in Sources */,
 				D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */,
 				D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */,
 				D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */,
-				D8E51BF32A095A19000CCEE3 /* OpenAISessioning.swift in Sources */,
+				D8E51BF32A095A19000CCEE3 /* OpenAIRequesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,8 +423,9 @@
 			files = (
 				D8E51BB22A090E95000CCEE3 /* LanguageBuddyTests.swift in Sources */,
 				D8E51BD42A0910A3000CCEE3 /* MessageTests.swift in Sources */,
+				D814E86D2A09976D00ECCA17 /* OpenAIRequesterTests.swift in Sources */,
 				D8E51BF52A095AE2000CCEE3 /* AppViewModelTests.swift in Sources */,
-				D8E51BF82A095B4D000CCEE3 /* FakeOpenAISession.swift in Sources */,
+				D8E51BF82A095B4D000CCEE3 /* FakeOpenAIRequester.swift in Sources */,
 				D8E51BD62A0911A6000CCEE3 /* JSONLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

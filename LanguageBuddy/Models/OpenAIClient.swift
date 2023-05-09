@@ -1,8 +1,11 @@
 import Foundation
 
-
-
 struct OpenAIClient: OpenAIClienting {
+    var clientCredential: String {
+        // TODO: Use your own key here
+        "OPENAI_API_KEY"
+    }
+    
     var defaultModel: String {
         "gpt-3.5-turbo"
     }
@@ -11,37 +14,36 @@ struct OpenAIClient: OpenAIClienting {
         1
     }
     
-    let requestBuilder: OpenAIRequestBuilding
-    
-    init(requestBuilder: OpenAIRequestBuilding) {
-        self.requestBuilder = requestBuilder
-    }
-    
-    func sendChatRequest(messages: [Message],
-                         model: String?,
-                         temperature: Double?) async throws -> Result<ChatCompletionResponse, Error> {
+    // TODO: Test me
+    func sendChatRequest(messages: [Message]) async throws -> Result<ChatCompletionResponse, OpenAIError> {
+        var urlRequest = OpenAIRequest.chatCompletions.urlRequest
         
-        let model = model ?? defaultModel
-        let temperature = temperature ?? defaultTemperature
+        urlRequest.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        var urlRequest = requestBuilder.buildRequest(.chatCompletions)
-        
-        let chatRequest = ChatCompletionRequest(model: defaultModel,
+        let model = defaultModel
+        let temperature = defaultTemperature
+        let chatRequest = ChatCompletionRequest(model: model,
                                                 messages: messages,
-                                                temperature: defaultTemperature)
+                                                temperature: temperature)
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    print("Success!")
-                } else {
-                    print("Error: \(httpResponse.statusCode)")
-                }
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            
+            if let error = try? JSONDecoder().decode(OpenAIErrorResponse.self,
+                                                     from: data) {
+                return .failure(.serverError(error.error))
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(ChatCompletionResponse.self, from: data)
+                return .success(response)
+            } catch {
+                return .failure(.decodingError(error))
             }
         } catch {
-            return Result.failure(error)
+            return .failure(.genericError(error))
         }
     }
 }

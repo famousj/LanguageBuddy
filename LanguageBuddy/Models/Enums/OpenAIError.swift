@@ -1,6 +1,7 @@
 import Foundation
 
 enum OpenAIError: Error {
-    case serverError(String)
-    case decodingError(String)
+    case serverError(OpenAIErrorDetails)
+    case decodingError(Error)
+    case genericError(Error)
 }

@@ -14,9 +14,11 @@
 		D814E8752A0A35B500ECCA17 /* ChatCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */; };
 		D814E8772A0A362300ECCA17 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8762A0A362300ECCA17 /* Choice.swift */; };
 		D814E8792A0A367000ECCA17 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8782A0A367000ECCA17 /* Usage.swift */; };
-		D814E87B2A0A374D00ECCA17 /* OpenAIRequestBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E87A2A0A374D00ECCA17 /* OpenAIRequestBuilding.swift */; };
-		D814E87D2A0A37A300ECCA17 /* OpenAIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E87C2A0A37A300ECCA17 /* OpenAIRequestBuilder.swift */; };
+		D814E87D2A0A37A300ECCA17 /* OpenAIRequest+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */; };
 		D814E87F2A0A3FEB00ECCA17 /* OpenAIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E87E2A0A3FEB00ECCA17 /* OpenAIError.swift */; };
+		D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */; };
+		D814E8832A0A41C000ECCA17 /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8822A0A41C000ECCA17 /* JSONNull.swift */; };
+		D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */; };
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
 		D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* PromptView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
@@ -67,9 +69,11 @@
 		D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionResponse.swift; sourceTree = "<group>"; };
 		D814E8762A0A362300ECCA17 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		D814E8782A0A367000ECCA17 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
-		D814E87A2A0A374D00ECCA17 /* OpenAIRequestBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequestBuilding.swift; sourceTree = "<group>"; };
-		D814E87C2A0A37A300ECCA17 /* OpenAIRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequestBuilder.swift; sourceTree = "<group>"; };
+		D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenAIRequest+URL.swift"; sourceTree = "<group>"; };
 		D814E87E2A0A3FEB00ECCA17 /* OpenAIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIError.swift; sourceTree = "<group>"; };
+		D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorResponse.swift; sourceTree = "<group>"; };
+		D814E8822A0A41C000ECCA17 /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
+		D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorDetails.swift; sourceTree = "<group>"; };
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
 		D8E51BA22A090E93000CCEE3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -212,8 +216,10 @@
 				D814E8762A0A362300ECCA17 /* Choice.swift */,
 				D8E51BCD2A090F78000CCEE3 /* Message.swift */,
 				D8E51BF02A095981000CCEE3 /* OpenAIClient.swift */,
-				D814E87C2A0A37A300ECCA17 /* OpenAIRequestBuilder.swift */,
+				D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */,
+				D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */,
 				D814E8782A0A367000ECCA17 /* Usage.swift */,
+				D814E8822A0A41C000ECCA17 /* JSONNull.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 			children = (
 				D8E51BCC2A090F78000CCEE3 /* Role.swift */,
 				D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */,
+				D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */,
 				D814E87E2A0A3FEB00ECCA17 /* OpenAIError.swift */,
 			);
 			path = Enums;
@@ -257,7 +264,6 @@
 			children = (
 				D8E51BE92A0949FA000CCEE3 /* AppViewModeling.swift */,
 				D814E8702A0A29B300ECCA17 /* OpenAIClienting.swift */,
-				D814E87A2A0A374D00ECCA17 /* OpenAIRequestBuilding.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -410,13 +416,14 @@
 			files = (
 				D814E8752A0A35B500ECCA17 /* ChatCompletionResponse.swift in Sources */,
 				D8E51BE42A09488F000CCEE3 /* AppViewModel.swift in Sources */,
+				D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */,
 				D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */,
 				D8E51BEF2A095042000CCEE3 /* ContentView.swift in Sources */,
 				D8E51BDF2A091A22000CCEE3 /* MessagesView.swift in Sources */,
 				D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */,
 				D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */,
-				D814E87B2A0A374D00ECCA17 /* OpenAIRequestBuilding.swift in Sources */,
 				D8E51BA32A090E93000CCEE3 /* PromptView.swift in Sources */,
+				D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */,
 				D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */,
 				D814E87F2A0A3FEB00ECCA17 /* OpenAIError.swift in Sources */,
 				D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */,
@@ -424,7 +431,8 @@
 				D814E8792A0A367000ECCA17 /* Usage.swift in Sources */,
 				D8E51BF12A095981000CCEE3 /* OpenAIClient.swift in Sources */,
 				D8E51BD92A0916CD000CCEE3 /* MessageRowView.swift in Sources */,
-				D814E87D2A0A37A300ECCA17 /* OpenAIRequestBuilder.swift in Sources */,
+				D814E8832A0A41C000ECCA17 /* JSONNull.swift in Sources */,
+				D814E87D2A0A37A300ECCA17 /* OpenAIRequest+URL.swift in Sources */,
 				D8E51BEA2A0949FA000CCEE3 /* AppViewModeling.swift in Sources */,
 				D8E51BCF2A090F78000CCEE3 /* Message.swift in Sources */,
 				D814E8712A0A29B300ECCA17 /* OpenAIClienting.swift in Sources */,

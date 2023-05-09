@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct ContentView<AppViewModel>: View where AppViewModel: AppViewModelable {
-    @ObservedObject var appViewModel: AppViewModel
+    @StateObject var appViewModel: AppViewModel
 
     var body: some View {
-        PromptView(appViewModel: appViewModel)
+        MessagesView(appViewModel: appViewModel)
     }
 }
 

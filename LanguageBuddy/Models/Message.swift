@@ -21,7 +21,7 @@ extension Message: Identifiable {}
 extension Message: Hashable {}
 
 extension Message {
-    init(role: Role, content: String, name: String?) {
+    init(role: Role, content: String, name: String? = nil) {
         self.id = UUID()
         self.role = role
         self.content = content

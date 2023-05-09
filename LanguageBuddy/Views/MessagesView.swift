@@ -1,22 +1,21 @@
 import SwiftUI
 
-struct MessagesView: View {
-    let messages: [Message]
+struct MessagesView<AppViewModel>: View where AppViewModel: AppViewModelable {
+    @ObservedObject var appViewModel: AppViewModel
     
     var body: some View {
-        ScrollViewReader { proxy in
-            List(messages) { message in
-                MessageRowView(message: message)
-            }
-            .onAppear {
-                proxy.scrollTo(messages[messages.endIndex - 1].id)
-            }
+        VStack {
+            MessagesList(appViewModel: appViewModel)
+            PromptEntryView(appViewModel: appViewModel)
         }
-    }    
+        .padding()
+    }
 }
 
-struct MessagesView_Previews: PreviewProvider {
+struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesView(messages: Message.previewArray(count: 100))
+        let appViewModel = FakeAppViewModel()
+        
+        return MessagesView(appViewModel: appViewModel)
     }
 }

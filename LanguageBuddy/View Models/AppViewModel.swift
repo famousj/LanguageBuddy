@@ -3,9 +3,9 @@ import Foundation
 class AppViewModel: ObservableObject, AppViewModeling {
     @Published var messages = [Message]()
     
-    private let openAISession: OpenAIRequesting
+    private let openAIClient: OpenAIClienting
     
-    init(openAISession: OpenAIRequesting = OpenAIRequester()) {
-        self.openAISession = openAISession
+    init(openAIClient: OpenAIClienting = OpenAIClient()) {
+        self.openAIClient = openAIClient
     }    
 }

@@ -16,21 +16,14 @@ fileprivate extension OpenAIRequest {
     }
 }
 
-struct OpenAIRequester: OpenAIRequesting {
+struct OpenAIRequestBuilder: OpenAIRequestBuilding {
     var clientCredential: String {
+        // TODO: Use your own key here
         "OPENAI_API_KEY"
     }
     
-    var defaultModel: String {
-        "gpt-3.5-turbo"
-    }
-    
-    var defaultTemperature: Double {
-        1
-    }
-    
-    func createChatCompletionRequest(messages: [Message]) -> URLRequest {
-        let url = OpenAIRequest.chatCompletions.url
+    func buildRequest(_ request: OpenAIRequest) -> URLRequest {
+        let url = request.url
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -38,9 +31,6 @@ struct OpenAIRequester: OpenAIRequesting {
         request.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let chatRequest = ChatCompletionRequest(model: defaultModel, messages: messages, temperature: defaultTemperature)
-        request.httpBody = try! JSONEncoder().encode(chatRequest)
-                                                      
         return request
     }
 }

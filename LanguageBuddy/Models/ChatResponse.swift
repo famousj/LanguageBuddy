@@ -1,10 +1,10 @@
 import Foundation
 
-struct ChatCompletionResponse {
+struct ChatResponse {
     let id, object: String
     let created: Int
     let choices: [Choice]
     let usage: Usage
 }
 
-extension ChatCompletionResponse: Codable {}
+extension ChatResponse: Codable {}

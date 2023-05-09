@@ -1,6 +1,6 @@
 import Foundation
 
-struct ChatCompletionRequest {
+struct ChatRequest {
     let model: String
     let messages: [Message]
     let temperature: Double?
@@ -15,7 +15,7 @@ struct ChatCompletionRequest {
     let user: String?
 }
 
-extension ChatCompletionRequest: Codable {
+extension ChatRequest: Codable {
     enum CodingKeys: String, CodingKey {
         case model, messages, temperature
         case topP = "top_p"
@@ -28,7 +28,7 @@ extension ChatCompletionRequest: Codable {
     }
 }
 
-extension ChatCompletionRequest {
+extension ChatRequest {
     init(model: String, messages: [Message], temperature: Double) {
         self.model = model
         self.messages = messages

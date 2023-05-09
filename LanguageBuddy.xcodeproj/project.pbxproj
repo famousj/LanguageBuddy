@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */; };
-		D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */; };
+		D814E86F2A09A24C00ECCA17 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86E2A09A24C00ECCA17 /* ChatRequest.swift */; };
 		D814E8712A0A29B300ECCA17 /* OpenAIClientable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */; };
 		D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */; };
-		D814E8752A0A35B500ECCA17 /* ChatCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */; };
+		D814E8752A0A35B500ECCA17 /* ChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8742A0A35B500ECCA17 /* ChatResponse.swift */; };
 		D814E8772A0A362300ECCA17 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8762A0A362300ECCA17 /* Choice.swift */; };
 		D814E8792A0A367000ECCA17 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8782A0A367000ECCA17 /* Usage.swift */; };
 		D814E87D2A0A37A300ECCA17 /* OpenAIRequest+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */; };
@@ -65,10 +65,10 @@
 
 /* Begin PBXFileReference section */
 		D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientTests.swift; sourceTree = "<group>"; };
-		D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionRequest.swift; sourceTree = "<group>"; };
+		D814E86E2A09A24C00ECCA17 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientable.swift; sourceTree = "<group>"; };
 		D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRequest.swift; sourceTree = "<group>"; };
-		D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionResponse.swift; sourceTree = "<group>"; };
+		D814E8742A0A35B500ECCA17 /* ChatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResponse.swift; sourceTree = "<group>"; };
 		D814E8762A0A362300ECCA17 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		D814E8782A0A367000ECCA17 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenAIRequest+URL.swift"; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				D8E51BE52A094990000CCEE3 /* Enums */,
-				D814E86E2A09A24C00ECCA17 /* ChatCompletionRequest.swift */,
-				D814E8742A0A35B500ECCA17 /* ChatCompletionResponse.swift */,
+				D814E86E2A09A24C00ECCA17 /* ChatRequest.swift */,
+				D814E8742A0A35B500ECCA17 /* ChatResponse.swift */,
 				D814E8762A0A362300ECCA17 /* Choice.swift */,
 				D8E51BCD2A090F78000CCEE3 /* Message.swift */,
 				D8E51BF02A095981000CCEE3 /* OpenAIClient.swift */,
@@ -428,7 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D814E8752A0A35B500ECCA17 /* ChatCompletionResponse.swift in Sources */,
+				D814E8752A0A35B500ECCA17 /* ChatResponse.swift in Sources */,
 				D8E51BE42A09488F000CCEE3 /* AppViewModel.swift in Sources */,
 				D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */,
 				D8E51BED2A094BF2000CCEE3 /* FakeAppViewModel.swift in Sources */,
@@ -442,7 +442,7 @@
 				D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */,
 				D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */,
 				D814E87F2A0A3FEB00ECCA17 /* OpenAIError.swift in Sources */,
-				D814E86F2A09A24C00ECCA17 /* ChatCompletionRequest.swift in Sources */,
+				D814E86F2A09A24C00ECCA17 /* ChatRequest.swift in Sources */,
 				D814E8772A0A362300ECCA17 /* Choice.swift in Sources */,
 				D814E8792A0A367000ECCA17 /* Usage.swift in Sources */,
 				D8E51BF12A095981000CCEE3 /* OpenAIClient.swift in Sources */,

@@ -15,7 +15,8 @@ struct OpenAIClient: OpenAIClienting {
     }
     
     // TODO: Test me
-    func sendChatRequest(messages: [Message]) async throws -> Result<ChatCompletionResponse, OpenAIError> {
+    func sendChatRequest(messages: [Message],
+                         urlSession: URLSessioning = URLSession.shared as! URLSessioning) async throws -> Result<ChatCompletionResponse, OpenAIError> {
         var urlRequest = OpenAIRequest.chatCompletions.urlRequest
         
         urlRequest.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")
@@ -29,7 +30,7 @@ struct OpenAIClient: OpenAIClienting {
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         
         do {
-            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            let (data, _) = try await urlSession.data(for: urlRequest)
             
             if let error = try? JSONDecoder().decode(OpenAIErrorResponse.self,
                                                      from: data) {

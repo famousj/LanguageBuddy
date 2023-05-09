@@ -1,10 +1,15 @@
 import Foundation
 
 extension OpenAIRequest {
+    
+    private var hostname: String {
+        "https://api.openai.com"
+    }
+    
     private var path: String {
         switch self {
         case .chatCompletions:
-            return "/chat/completions"
+            return "/v1/chat/completions"
         }
     }
     
@@ -16,15 +21,12 @@ extension OpenAIRequest {
     }
     
     var urlRequest: URLRequest {
-        let prefix = "https://api.openai.com/v1"
-        
-        let urlString = prefix + self.path
+        let urlString = hostname + path
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         
         request.httpMethod = method
         
         return request
-        
     }
 }

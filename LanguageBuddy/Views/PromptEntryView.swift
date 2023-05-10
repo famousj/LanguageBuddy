@@ -6,7 +6,7 @@ where AppViewModel: AppViewModelable {
     @FocusState var promptIsFocused: Bool
     
     var body: some View {
-        ZStack(alignment: .trailing) {
+        HStack {
             TextField("Your question here...",
                       text: $appViewModel.currentPrompt)
                 .padding(15)
@@ -15,10 +15,9 @@ where AppViewModel: AppViewModelable {
                 .focused($promptIsFocused)
                 .onSubmit { newPrompt() }
             Button(action: { newPrompt() }) {
-                Image(systemName: "paperplane")
+                Image(systemName: "paperplane.fill")
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
-                    .padding(.trailing, 10)
             }
         }
         .padding(10)

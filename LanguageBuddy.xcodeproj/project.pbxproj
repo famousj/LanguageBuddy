@@ -20,7 +20,6 @@
 		D814E8832A0A41C000ECCA17 /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8822A0A41C000ECCA17 /* JSONNull.swift */; };
 		D814E8852A0A584800ECCA17 /* OpenAIErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */; };
 		D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8882A0A651400ECCA17 /* URLSessionable.swift */; };
-		D814E88F2A0A81D600ECCA17 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E88E2A0A81D600ECCA17 /* Token.swift */; };
 		D814E8942A0AA10B00ECCA17 /* MessageCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8932A0AA10B00ECCA17 /* MessageCreatable.swift */; };
 		D814E8962A0AA14100ECCA17 /* MessageCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8952A0AA14100ECCA17 /* MessageCreator.swift */; };
 		D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */; };
@@ -82,7 +81,6 @@
 		D814E8822A0A41C000ECCA17 /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorDetails.swift; sourceTree = "<group>"; };
 		D814E8882A0A651400ECCA17 /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
-		D814E88E2A0A81D600ECCA17 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D814E8932A0AA10B00ECCA17 /* MessageCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreatable.swift; sourceTree = "<group>"; };
 		D814E8952A0AA14100ECCA17 /* MessageCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreator.swift; sourceTree = "<group>"; };
 		D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreatorTests.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 				D8E51BE92A0949FA000CCEE3 /* AppViewModelable.swift */,
 				D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */,
 				D814E8882A0A651400ECCA17 /* URLSessionable.swift */,
-				D814E88E2A0A81D600ECCA17 /* Token.swift */,
 				D814E8932A0AA10B00ECCA17 /* MessageCreatable.swift */,
 			);
 			path = Protocols;
@@ -453,7 +450,6 @@
 				D8E51BDB2A091702000CCEE3 /* Message+Preview.swift in Sources */,
 				D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */,
 				D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */,
-				D814E88F2A0A81D600ECCA17 /* Token.swift in Sources */,
 				D814E89C2A0AAB0200ECCA17 /* OpenAIMessage.swift in Sources */,
 				D8E51BA32A090E93000CCEE3 /* MessagesView.swift in Sources */,
 				D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */,

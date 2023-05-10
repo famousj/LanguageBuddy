@@ -23,9 +23,10 @@ struct OpenAIClient: OpenAIClientable {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let model = defaultModel
+        let openAIMessages = messages.map { OpenAIMessage(message: $0) }
         let temperature = defaultTemperature
         let chatRequest = ChatRequest(model: model,
-                                                messages: messages,
+                                      messages: openAIMessages,
                                                 temperature: temperature)
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         

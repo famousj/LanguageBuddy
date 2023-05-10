@@ -2,7 +2,7 @@ import Foundation
 
 struct ChatRequest {
     let model: String
-    let messages: [Message]
+    let messages: [OpenAIMessage]
     let temperature: Double?
     let topP: Double?
     let n: Int?
@@ -29,7 +29,7 @@ extension ChatRequest: Codable {
 }
 
 extension ChatRequest {
-    init(model: String, messages: [Message], temperature: Double) {
+    init(model: String, messages: [OpenAIMessage], temperature: Double) {
         self.model = model
         self.messages = messages
         self.temperature = temperature

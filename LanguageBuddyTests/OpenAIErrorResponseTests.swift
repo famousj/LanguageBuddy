@@ -6,4 +6,3 @@ final class OpenAIErrorResponseTests: XCTestCase {
         let _: OpenAIErrorResponse = try JSONLoader.load("openai-error-response.json")
     }
 }
-

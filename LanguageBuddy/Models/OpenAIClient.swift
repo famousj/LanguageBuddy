@@ -12,7 +12,7 @@ struct OpenAIClient: OpenAIClientable {
     }
     
     func sendChatRequest(messages: [Message],
-                         urlSession: URLSessionable = URLSession.shared) async -> Result<ChatResponse, OpenAIError> {
+                         urlSession: URLSessionable = URLSession.shared) async -> ChatResult {
         var urlRequest = OpenAIRequest.chatCompletions.urlRequest
         
         urlRequest.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")

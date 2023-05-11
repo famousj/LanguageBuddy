@@ -12,6 +12,4 @@ class FakeURLSession: URLSessionable {
         
         return (data_returnData!, data_returnURLResponse!)
     }
-    
-    
 }

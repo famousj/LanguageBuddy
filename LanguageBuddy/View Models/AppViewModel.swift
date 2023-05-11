@@ -5,12 +5,15 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var messages = [Message]()
     @Published var currentPrompt: String = ""
     
-    private let language = "European Portuguese"
+    private static let defaultLanguage = "European Portuguese"
+    let language: String
     
     private let openAIClient: OpenAIClientable
     
-    init(openAIClient: OpenAIClientable = OpenAIClient()) {
+    init(openAIClient: OpenAIClientable = OpenAIClient(),
+         language: String = defaultLanguage) {
         self.openAIClient = openAIClient
+        self.language = language
     }
     
     func newPrompt() {
@@ -28,8 +31,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
     }
         
     private func sendMessagesToClient(messages: [Message]) async {
-        let client = OpenAIClient()
-        let result = await client.sendChatRequest(messages: messages)
+        let result = await openAIClient.sendChatRequest(messages: messages)
         
         print(result)
         if case .failure(let error) = result {

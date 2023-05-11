@@ -8,3 +8,11 @@ extension Message {
         XCTAssertEqual(self.name, message?.name)
     }
 }
+
+extension [Message] {
+    func assertEqual(to messages: [Message]) {
+        for (i, message) in self.enumerated() {
+            message.assertEqual(to: messages[i])
+        }
+    }
+}

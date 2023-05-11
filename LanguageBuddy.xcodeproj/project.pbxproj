@@ -28,6 +28,7 @@
 		D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */; };
 		D88B49A22A0D051400C8E223 /* chat-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D88B49A12A0D051400C8E223 /* chat-response.json */; };
 		D88B49A42A0D055000C8E223 /* ChatResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88B49A32A0D055000C8E223 /* ChatResponseTests.swift */; };
+		D88B49A62A0D080500C8E223 /* FakeURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88B49A52A0D080500C8E223 /* FakeURLSession.swift */; };
 		D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */; };
 		D8E51BA32A090E93000CCEE3 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* MessagesView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorResponseTests.swift; sourceTree = "<group>"; };
 		D88B49A12A0D051400C8E223 /* chat-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "chat-response.json"; sourceTree = "<group>"; };
 		D88B49A32A0D055000C8E223 /* ChatResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResponseTests.swift; sourceTree = "<group>"; };
+		D88B49A52A0D080500C8E223 /* FakeURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeURLSession.swift; sourceTree = "<group>"; };
 		D8E51B9D2A090E93000CCEE3 /* LanguageBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BA02A090E93000CCEE3 /* LanguageBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyApp.swift; sourceTree = "<group>"; };
 		D8E51BA22A090E93000CCEE3 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
@@ -248,8 +250,8 @@
 				D8E51BF02A095981000CCEE3 /* OpenAIClient.swift */,
 				D814E8842A0A584800ECCA17 /* OpenAIErrorDetails.swift */,
 				D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */,
-				D814E8782A0A367000ECCA17 /* Usage.swift */,
 				D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */,
+				D814E8782A0A367000ECCA17 /* Usage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,6 +316,7 @@
 		D8E51BF62A095B3E000CCEE3 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
+				D88B49A52A0D080500C8E223 /* FakeURLSession.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */,
 				D8E51BF52A095AE2000CCEE3 /* AppViewModelTests.swift in Sources */,
 				D8E51BD62A0911A6000CCEE3 /* JSONLoader.swift in Sources */,
+				D88B49A62A0D080500C8E223 /* FakeURLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

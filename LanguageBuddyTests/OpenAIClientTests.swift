@@ -2,16 +2,46 @@ import XCTest
 @testable import LanguageBuddy
 
 final class OpenAIClientTests: XCTestCase {
-    func test_buildRequest_chat() {
-        let _ = OpenAIClient()
+    func test_sendChatRequest_usesCorrectRequestHeaders() async {
+        let testObject = OpenAIClient()
         
-//        XCTAssertEqual(request.url?.absoluteString,
-//                       "https://api.openai.com/v1/chat/completions")
-//        XCTAssertEqual(request.httpMethod, "POST")
-
+        let session = FakeURLSession()
+        session.data_returnData = Data()
+        session.data_returnURLResponse = URLResponse()
         
-        //        let expectedHeaderKeys = ["Authorization", "Content-Type"]
-//        let actualHeaderKeys = Array(request.allHTTPHeaderFields!.keys)
-//        XCTAssertEqual(actualHeaderKeys, expectedHeaderKeys)
+        let _ = await testObject.sendChatRequest(messages: [], urlSession: session)
+        
+        XCTAssertEqual(session.data_calledCount, 1)
+        
+        let request = session.data_paramRequest
+        
+        let headerFields = request?.allHTTPHeaderFields!
+        let actualHeaderKeys = Array(headerFields!.keys)
+        let expectedHeaderKeys = ["Authorization", "Content-Type"]
+        XCTAssertEqual(actualHeaderKeys, expectedHeaderKeys)
+        
+        let actualBody = request?.httpBody
+        
+        
     }
+
+    func test_sendChatRequest_usesCorrectRequestBody() async {
+        let testObject = OpenAIClient()
+        
+        let session = FakeURLSession()
+        session.data_returnData = Data()
+        session.data_returnURLResponse = URLResponse()
+        
+        let _ = await testObject.sendChatRequest(messages: [], urlSession: session)
+        
+        XCTAssertEqual(session.data_calledCount, 1)
+        
+        let request = session.data_paramRequest
+        
+        let headerFields = request?.allHTTPHeaderFields!
+        let actualHeaderKeys = Array(headerFields!.keys)
+        let expectedHeaderKeys = ["Authorization", "Content-Type"]
+        XCTAssertEqual(actualHeaderKeys, expectedHeaderKeys)
+    }
+
 }

@@ -11,10 +11,6 @@ struct OpenAIClient: OpenAIClientable {
         "gpt-4"
     }
     
-    var defaultTemperature: Double {
-        1
-    }
-    
     // TODO: Test me
     func sendChatRequest(messages: [Message],
                          urlSession: URLSessionable = URLSession.shared) async -> Result<ChatResponse, OpenAIError> {
@@ -25,10 +21,8 @@ struct OpenAIClient: OpenAIClientable {
         
         let model = defaultModel
         let openAIMessages = messages.map { OpenAIMessage(message: $0) }
-        let temperature = defaultTemperature
         let chatRequest = ChatRequest(model: model,
-                                      messages: openAIMessages,
-                                                temperature: temperature)
+                                      messages: openAIMessages)
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         print("BODY: \(String(data: urlRequest.httpBody!, encoding: .utf8)!)")
         

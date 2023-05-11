@@ -22,4 +22,14 @@ final class MessageTests: XCTestCase {
             }
         }
     }
+    
+    func test_isAssistantThinking() {
+        let assistantThinking = Message(role: .assistant, content: "...")
+        let notAssistant = Message(role: .user, content: "...")
+        let notThinking = Message(role: .assistant, content: "something that isn't ellipses")
+        
+        XCTAssertEqual(assistantThinking.isAssistantThinking, true)
+        XCTAssertEqual(notAssistant.isAssistantThinking, false)
+        XCTAssertEqual(notThinking.isAssistantThinking, false)
+    }
 }

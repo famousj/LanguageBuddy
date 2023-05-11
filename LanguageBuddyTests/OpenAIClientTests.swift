@@ -3,7 +3,7 @@ import XCTest
 
 final class OpenAIClientTests: XCTestCase {
     func test_buildRequest_chat() {
-        let testObject = OpenAIClient()
+        let _ = OpenAIClient()
         
 //        XCTAssertEqual(request.url?.absoluteString,
 //                       "https://api.openai.com/v1/chat/completions")

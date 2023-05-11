@@ -29,4 +29,13 @@ extension Message {
     }
 }
 
-
+extension Message {
+    private static let thinkingText = "..."
+    static var assistantThinking: Message {
+        Message(role: .assistant, content: thinkingText)
+    }
+    
+    var isAssistantThinking: Bool {
+        role == .assistant && content == Message.thinkingText
+    }
+}

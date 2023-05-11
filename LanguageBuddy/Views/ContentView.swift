@@ -5,6 +5,9 @@ struct ContentView<AppViewModel>: View where AppViewModel: AppViewModelable {
 
     var body: some View {
         MessagesView(appViewModel: appViewModel)
+            .task {
+                await appViewModel.loadUserSettings()
+            }
     }
 }
 

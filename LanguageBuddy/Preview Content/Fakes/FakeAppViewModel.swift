@@ -15,4 +15,7 @@ class FakeAppViewModel: AppViewModelable {
         messages.append(Message(role: .user, content: currentPrompt))
         currentPrompt = ""
     }
+    
+    func loadUserSettings() async {}
+    func saveUserSettings() async {}
 }

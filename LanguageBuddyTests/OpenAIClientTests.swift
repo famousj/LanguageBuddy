@@ -9,9 +9,11 @@ final class OpenAIClientTests: XCTestCase {
         session.data_returnData = Data()
         session.data_returnURLResponse = URLResponse()
         
+        let model = Model.allCases.randomElement()!
         let messageCount = Int.random(in: 5..<20)
         let messages = Array(0..<messageCount).map { _ in Message.random }
-        let _ = await testObject.sendChatRequest(messages: messages,
+        let _ = await testObject.sendChatRequest(model: model,
+                                                 messages: messages,
                                                  urlSession: session)
         
         XCTAssertEqual(session.data_calledCount, 1)
@@ -27,7 +29,7 @@ final class OpenAIClientTests: XCTestCase {
         let requestBody: Data = (request?.httpBody)!
         let actualChatRequest = try JSONDecoder().decode(ChatRequest.self, from: requestBody)
         
-        XCTAssertEqual(actualChatRequest.model, testObject.defaultModel)
+        XCTAssertEqual(actualChatRequest.model, model.rawValue)
         
         let expectedMessages = messages
             .map { OpenAIMessage(message: $0) }
@@ -51,7 +53,8 @@ final class OpenAIClientTests: XCTestCase {
         session.data_returnData = try JSONEncoder().encode(errorResponse)
         session.data_returnURLResponse = URLResponse()
         
-        let result = await testObject.sendChatRequest(messages: [],
+        let result = await testObject.sendChatRequest(model: .gpt3,
+                                                      messages: [],
                                                       urlSession: session)
         guard case .failure(let error) = result,
               case .serverError(let serverError) = error else {
@@ -70,7 +73,8 @@ final class OpenAIClientTests: XCTestCase {
         session.data_returnData = try JSONEncoder().encode(notChatResponse)
         session.data_returnURLResponse = URLResponse()
         
-        let result = await testObject.sendChatRequest(messages: [],
+        let result = await testObject.sendChatRequest(model: .gpt4,
+                                                      messages: [],
                                                       urlSession: session)
         guard case .failure(let error) = result,
               case .decodingError = error else {
@@ -94,7 +98,8 @@ final class OpenAIClientTests: XCTestCase {
         session.data_returnData = try JSONEncoder().encode(expectedResponse)
         session.data_returnURLResponse = URLResponse()
         
-        let result = await testObject.sendChatRequest(messages: [],
+        let result = await testObject.sendChatRequest(model: .gpt3,
+                                                      messages: [],
                                                       urlSession: session)
         guard case .success(let actualResponse) = result else {
             XCTFail("Should have returned a success!")

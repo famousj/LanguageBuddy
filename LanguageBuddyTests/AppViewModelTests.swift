@@ -5,8 +5,13 @@ final class AppViewModelTests: XCTestCase {
     private let sleepDuration = Duration.seconds(0.3)
     func test_doesNotRetain() async throws {
         var client: FakeOpenAIClient? = FakeOpenAIClient()
-        var testObject: AppViewModel? = AppViewModel(openAIClient: client!)
-        
+        var userSettingsStore: FakeUserSettingsStore? = FakeUserSettingsStore()
+        var testObject: AppViewModel? = AppViewModel(openAIClient: client!,
+                                                     userSettingsStore: userSettingsStore!)
+
+        userSettingsStore?.load_returnUserSettings = UserSettings.random
+        await testObject?.loadUserSettings()
+
         testObject?.currentPrompt = String.random
         client?.sendChatRequest_returnResult = failureResult
 
@@ -17,13 +22,44 @@ final class AppViewModelTests: XCTestCase {
         weak var weakTestObject = testObject
         testObject = nil
         client = nil
+        userSettingsStore = nil
         XCTAssertNil(weakTestObject)
     }
     
-    func test_newPrompt_addsNewMessage() {
-        let testObject = AppViewModel(openAIClient: emptyClient)
+    func test_loadUserSettings_callsStore() async {
+        let userSettingsStore = FakeUserSettingsStore()
+        let testObject = AppViewModel(userSettingsStore: userSettingsStore)
+        
+        let userSettings = UserSettings(language: UUID().uuidString,
+                                        model: Model.allCases.randomElement()!)
+        userSettingsStore.load_returnUserSettings = userSettings
+        
+        XCTAssertEqual(testObject.disablePrompt, true)
+        
+        await testObject.loadUserSettings()
+        XCTAssertEqual(userSettingsStore.load_calledCount, 1)
+        XCTAssertEqual(testObject.userSettings, userSettings)
+        XCTAssertEqual(testObject.disablePrompt, false)
+    }
+
+    func test_loadUserSettings_onError_usesDefault() async {
+        let userSettingsStore = FakeUserSettingsStore()
+        let testObject = AppViewModel(userSettingsStore: userSettingsStore)
+        
+        userSettingsStore.load_error = NSError(domain: "", code: 0)
+        
+        await testObject.loadUserSettings()
+        XCTAssertEqual(testObject.userSettings,
+                       UserSettings.defaultSettings)
+        XCTAssertEqual(testObject.disablePrompt, false)
+    }
+    
+    func test_newPrompt_addsNewMessage() async {
+        let testObject = AppViewModel(openAIClient: emptyClient,
+                                      userSettingsStore: userSettingsStoreWithSettings)
         
         XCTAssertEqual(testObject.messages.count, 0)
+        await testObject.loadUserSettings()
         
         let prompt = String.random
         testObject.currentPrompt = prompt
@@ -36,8 +72,10 @@ final class AppViewModelTests: XCTestCase {
         expectedMessage.assertEqual(to: message)
     }
     
-    func test_newPrompt_clearsCurrentPrompt() {
-        let testObject = AppViewModel(openAIClient: emptyClient)
+    func test_newPrompt_clearsCurrentPrompt() async {
+        let testObject = AppViewModel(openAIClient: emptyClient,
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
         
@@ -48,7 +86,9 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_whenCurrentPromptIsEmpty_noAction() async throws {
         let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client)
+        let testObject = AppViewModel(openAIClient: client,
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         testObject.currentPrompt = ""
         
@@ -63,9 +103,13 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_sendsMessagesToClient() async throws {
         let client = FakeOpenAIClient()
-        let language = UUID().uuidString
+        let userSettingsStore = FakeUserSettingsStore()
         let testObject = AppViewModel(openAIClient: client,
-                                      language: language)
+                                      userSettingsStore: userSettingsStore)
+        
+        let userSettings = UserSettings.random
+        userSettingsStore.load_returnUserSettings = userSettings
+        await testObject.loadUserSettings()
 
         let prompt = String.random
         testObject.currentPrompt = prompt
@@ -78,14 +122,17 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(client.sendChatRequest_calledCount, 1)
         
-        let expectedMessages = MessageCreator(language: language).messagesForPrompt(prompt)
+        let expectedMessages = MessageCreator(language: userSettings.language)
+            .messagesForPrompt(prompt)
 
         client.sendChatRequest_paramMessages?.assertEqual(to: expectedMessages)
     }
     
     func test_newPrompt_whenChatFails_displaysError() async throws {
         let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client)
+        let testObject = AppViewModel(openAIClient: client,
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
         
@@ -110,9 +157,9 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_addsSuccessfulMessageToList() async throws {
         let client = FakeOpenAIClient()
-        let language = UUID().uuidString
         let testObject = AppViewModel(openAIClient: client,
-                                      language: language)
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         let prompt = String.random
         testObject.currentPrompt = prompt
@@ -130,7 +177,9 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_disablesAndEnablesOnError() async throws {
         let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client)
+        let testObject = AppViewModel(openAIClient: client,
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
         
@@ -149,7 +198,9 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
         let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client)
+        let testObject = AppViewModel(openAIClient: client,
+                                      userSettingsStore: userSettingsStoreWithSettings)
+        await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
         
@@ -193,6 +244,12 @@ final class AppViewModelTests: XCTestCase {
         let client = FakeOpenAIClient()
         client.sendChatRequest_returnResult = failureResult
         return client
+    }
+    
+    private var userSettingsStoreWithSettings: UserSettingsStorable {
+        let store = FakeUserSettingsStore()
+        store.load_returnUserSettings = UserSettings.random
+        return store
     }
 }
 

@@ -10,4 +10,7 @@ protocol AppViewModelable: ObservableObject {
     var currentPrompt: String { get set }
     
     func newPrompt()
+    
+    func loadUserSettings() async
+    func saveUserSettings() async
 }

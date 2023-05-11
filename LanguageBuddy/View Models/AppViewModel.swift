@@ -8,21 +8,40 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var showChatError = false
     var chatError: OpenAIError?
     
-    @Published var disablePrompt = false
+    @Published var disablePrompt = true
     
-    private static let defaultLanguage = "European Portuguese"
-    private let userSettings: UserSettings
+    @Published var userSettings: UserSettings?
     
     private let openAIClient: OpenAIClientable
+    private let userSettingsStore: UserSettingsStorable
     
     init(openAIClient: OpenAIClientable = OpenAIClient(),
-         language: String = defaultLanguage) {
+         userSettingsStore: UserSettingsStorable = UserSettingsStore()) {
         self.openAIClient = openAIClient
-        self.userSettings = UserSettings(language: language,
-                                         model: .gpt4)
+        self.userSettingsStore = userSettingsStore
+    }
+    
+    func loadUserSettings() async {
+        let userSettings = (try? await userSettingsStore.load()) ??
+        UserSettings.defaultSettings
+        await setUserSettings(userSettings)
+        await setDisablePrompt(false)
+    }
+    
+    func saveUserSettings() async {
+        guard let userSettings = userSettings else {
+            return
+        }
+        
+        try? await userSettingsStore.save(userSettings: userSettings)
     }
     
     func newPrompt() {
+        guard let userSettings = userSettings else {
+            print("Trying to send a prompt before we've loaded the user settings!")
+            return
+        }
+        
         guard currentPrompt != "" else { return }
         
         disablePrompt = true
@@ -33,13 +52,15 @@ class AppViewModel: ObservableObject, AppViewModelable {
         Task {
             let messages = MessageCreator(language: userSettings.language)
                 .messagesForPrompt(promptToSend)
-            await sendMessagesToClient(messages: messages)
+            await sendMessagesToClient(userSettings: userSettings,
+                                       messages: messages)
         }
         
         currentPrompt = ""
     }
         
-    private func sendMessagesToClient(messages: [Message]) async {
+    private func sendMessagesToClient(userSettings: UserSettings,
+                                      messages: [Message]) async {
         let result = await openAIClient.sendChatRequest(model: userSettings.model,
                                                         messages: messages)
         
@@ -69,5 +90,9 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @MainActor
     private func setDisablePrompt(_ value: Bool) {
         disablePrompt = value
+    }
+    @MainActor
+    private func setUserSettings(_ value: UserSettings) {
+        userSettings = value
     }
 }

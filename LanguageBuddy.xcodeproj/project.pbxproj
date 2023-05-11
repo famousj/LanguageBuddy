@@ -35,7 +35,6 @@
 		D8E51BA32A090E93000CCEE3 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BA22A090E93000CCEE3 /* MessagesView.swift */; };
 		D8E51BA52A090E95000CCEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA42A090E95000CCEE3 /* Assets.xcassets */; };
 		D8E51BA82A090E95000CCEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51BA72A090E95000CCEE3 /* Preview Assets.xcassets */; };
-		D8E51BB22A090E95000CCEE3 /* LanguageBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */; };
 		D8E51BBC2A090E95000CCEE3 /* LanguageBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BBB2A090E95000CCEE3 /* LanguageBuddyUITests.swift */; };
 		D8E51BBE2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BBD2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift */; };
 		D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51BCC2A090F78000CCEE3 /* Role.swift */; };
@@ -104,7 +103,6 @@
 		D8E51BA42A090E95000CCEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8E51BA72A090E95000CCEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8E51BAD2A090E95000CCEE3 /* LanguageBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LanguageBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyTests.swift; sourceTree = "<group>"; };
 		D8E51BB72A090E95000CCEE3 /* LanguageBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LanguageBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51BBB2A090E95000CCEE3 /* LanguageBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyUITests.swift; sourceTree = "<group>"; };
 		D8E51BBD2A090E95000CCEE3 /* LanguageBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 				D8E51BD72A0911AD000CCEE3 /* Utilities */,
 				D8E51BF42A095AE2000CCEE3 /* AppViewModelTests.swift */,
 				D88B49A32A0D055000C8E223 /* ChatResponseTests.swift */,
-				D8E51BB12A090E95000CCEE3 /* LanguageBuddyTests.swift */,
 				D8E51BD32A0910A3000CCEE3 /* MessageTests.swift */,
 				D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */,
 				D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */,
@@ -508,7 +505,6 @@
 				D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */,
 				D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */,
 				D814E89A2A0AA2C900ECCA17 /* Message+Utilities.swift in Sources */,
-				D8E51BB22A090E95000CCEE3 /* LanguageBuddyTests.swift in Sources */,
 				D8E51BD42A0910A3000CCEE3 /* MessageTests.swift in Sources */,
 				D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */,
 				D8E51BF52A095AE2000CCEE3 /* AppViewModelTests.swift in Sources */,

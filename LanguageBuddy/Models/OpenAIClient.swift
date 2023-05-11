@@ -6,21 +6,16 @@ struct OpenAIClient: OpenAIClientable {
         "OPENAI_API_KEY"
     }
     
-    var defaultModel: String {
-//        "gpt-3.5-turbo"
-        "gpt-4"
-    }
-    
-    func sendChatRequest(messages: [Message],
+    func sendChatRequest(model: Model,
+                         messages: [Message],
                          urlSession: URLSessionable = URLSession.shared) async -> ChatResult {
         var urlRequest = OpenAIRequest.chatCompletions.urlRequest
         
         urlRequest.setValue("Bearer \(clientCredential)", forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let model = defaultModel
         let openAIMessages = messages.map { OpenAIMessage(message: $0) }
-        let chatRequest = ChatRequest(model: model,
+        let chatRequest = ChatRequest(model: model.rawValue,
                                       messages: openAIMessages)
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         

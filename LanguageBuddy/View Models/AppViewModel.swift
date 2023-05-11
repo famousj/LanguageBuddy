@@ -11,14 +11,15 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var disablePrompt = false
     
     private static let defaultLanguage = "European Portuguese"
-    let language: String
+    private let userSettings: UserSettings
     
     private let openAIClient: OpenAIClientable
     
     init(openAIClient: OpenAIClientable = OpenAIClient(),
          language: String = defaultLanguage) {
         self.openAIClient = openAIClient
-        self.language = language
+        self.userSettings = UserSettings(language: language,
+                                         model: .gpt4)
     }
     
     func newPrompt() {
@@ -30,7 +31,8 @@ class AppViewModel: ObservableObject, AppViewModelable {
 
         let promptToSend = currentPrompt
         Task {
-            let messages = MessageCreator(language: language).messagesForPrompt(promptToSend)
+            let messages = MessageCreator(language: userSettings.language)
+                .messagesForPrompt(promptToSend)
             await sendMessagesToClient(messages: messages)
         }
         
@@ -38,7 +40,8 @@ class AppViewModel: ObservableObject, AppViewModelable {
     }
         
     private func sendMessagesToClient(messages: [Message]) async {
-        let result = await openAIClient.sendChatRequest(messages: messages)
+        let result = await openAIClient.sendChatRequest(model: userSettings.model,
+                                                        messages: messages)
         
         print(result)
         switch result {

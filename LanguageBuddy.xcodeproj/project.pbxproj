@@ -24,6 +24,8 @@
 		D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */; };
 		D814E89A2A0AA2C900ECCA17 /* Message+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8992A0AA2C900ECCA17 /* Message+Utilities.swift */; };
 		D814E89C2A0AAB0200ECCA17 /* OpenAIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */; };
+		D8310DE02A0D626600AB9FCD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DDF2A0D626600AB9FCD /* UserSettings.swift */; };
+		D8310DE22A0D629C00AB9FCD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DE12A0D629C00AB9FCD /* Model.swift */; };
 		D88B499E2A0D036400C8E223 /* openai-error-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D88B499D2A0D036400C8E223 /* openai-error-response.json */; };
 		D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */; };
 		D88B49A22A0D051400C8E223 /* chat-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D88B49A12A0D051400C8E223 /* chat-response.json */; };
@@ -90,6 +92,8 @@
 		D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreatorTests.swift; sourceTree = "<group>"; };
 		D814E8992A0AA2C900ECCA17 /* Message+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Utilities.swift"; sourceTree = "<group>"; };
 		D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessage.swift; sourceTree = "<group>"; };
+		D8310DDF2A0D626600AB9FCD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		D8310DE12A0D629C00AB9FCD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D88B499D2A0D036400C8E223 /* openai-error-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "openai-error-response.json"; sourceTree = "<group>"; };
 		D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorResponseTests.swift; sourceTree = "<group>"; };
 		D88B49A12A0D051400C8E223 /* chat-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "chat-response.json"; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				D814E8802A0A418900ECCA17 /* OpenAIErrorResponse.swift */,
 				D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */,
 				D814E8782A0A367000ECCA17 /* Usage.swift */,
+				D8310DDF2A0D626600AB9FCD /* UserSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				D814E8722A0A2BA100ECCA17 /* OpenAIRequest.swift */,
 				D814E87C2A0A37A300ECCA17 /* OpenAIRequest+URL.swift */,
 				D814E87E2A0A3FEB00ECCA17 /* OpenAIError.swift */,
+				D8310DE12A0D629C00AB9FCD /* Model.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -475,10 +481,12 @@
 				D8E51BDB2A091702000CCEE3 /* Message+Random.swift in Sources */,
 				D814E8892A0A651400ECCA17 /* URLSessionable.swift in Sources */,
 				D814E8732A0A2BA100ECCA17 /* OpenAIRequest.swift in Sources */,
+				D8310DE02A0D626600AB9FCD /* UserSettings.swift in Sources */,
 				D814E89C2A0AAB0200ECCA17 /* OpenAIMessage.swift in Sources */,
 				D8E51BA32A090E93000CCEE3 /* MessagesView.swift in Sources */,
 				D814E8812A0A418900ECCA17 /* OpenAIErrorResponse.swift in Sources */,
 				D8E51BDD2A09188E000CCEE3 /* String+Random.swift in Sources */,
+				D8310DE22A0D629C00AB9FCD /* Model.swift in Sources */,
 				D814E87F2A0A3FEB00ECCA17 /* OpenAIError.swift in Sources */,
 				D814E86F2A09A24C00ECCA17 /* ChatRequest.swift in Sources */,
 				D814E8772A0A362300ECCA17 /* Choice.swift in Sources */,

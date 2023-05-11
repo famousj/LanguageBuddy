@@ -15,10 +15,17 @@ struct MessagesView<AppViewModel>: View where AppViewModel: AppViewModelable {
     }
 }
 
-struct PromptView_Previews: PreviewProvider {
+struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
         let appViewModel = FakeAppViewModel()
+        let errorDetails = OpenAIErrorDetails(message: "This is an error",
+                                              type: "Type here",
+                                              param: nil,
+                                              code: "PC-Load-Ltr")
+        appViewModel.chatError = OpenAIError.serverError(errorDetails)
         
+        appViewModel.showChatError = false
+
         return MessagesView(appViewModel: appViewModel)
     }
 }

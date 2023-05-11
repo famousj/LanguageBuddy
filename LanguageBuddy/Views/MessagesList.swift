@@ -21,7 +21,7 @@ where AppViewModel: AppViewModelable {
     }    
 }
 
-struct MessagesView_Previews: PreviewProvider {
+struct MessagesList_Previews: PreviewProvider {
     static var previews: some View {
         MessagesList(appViewModel: FakeAppViewModel())
     }

@@ -5,6 +5,9 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var messages = [Message]()
     @Published var currentPrompt: String = ""
     
+    @Published var showChatError = false
+    var chatError: OpenAIError?
+    
     private static let defaultLanguage = "European Portuguese"
     let language: String
     

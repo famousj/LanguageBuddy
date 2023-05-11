@@ -1,6 +1,9 @@
 import Foundation
 
 class FakeAppViewModel: AppViewModelable {
+    @Published var showChatError: Bool = false
+    var chatError: OpenAIError?
+    
     @Published var messages = Array(0...100)
         .map { Message(role: Role.allCases.randomElement()!, content: "\($0)") }
     

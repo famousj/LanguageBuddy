@@ -1,6 +1,6 @@
 import Foundation
 
-enum OpenAIError: Error {
+enum OpenAIError: LocalizedError {
     case serverError(OpenAIErrorDetails)
     case decodingError(Error)
     case genericError(Error)

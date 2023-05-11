@@ -82,6 +82,31 @@ final class AppViewModelTests: XCTestCase {
         client.sendChatRequest_paramMessages?.assertEqual(to: expectedMessages)
     }
     
+    func test_newPrompt_whenChatFails_displaysError() async throws {
+        let client = FakeOpenAIClient()
+        let testObject = AppViewModel(openAIClient: client)
+
+        testObject.currentPrompt = String.random
+        
+        XCTAssertEqual(testObject.showChatError, false)
+
+        let expectedDetails = OpenAIErrorDetails(message: String.random,
+                                              type: "",
+                                              param: nil,
+                                              code: nil)
+        let expectedError = OpenAIError.serverError(expectedDetails)
+        client.sendChatRequest_returnResult = .failure(expectedError)
+        
+        testObject.newPrompt()
+        
+        try await Task.sleep(for: sleepDuration)
+
+        XCTAssertEqual(testObject.showChatError, true)
+        
+        XCTAssertEqual(testObject.chatError?.localizedDescription,
+                       expectedError.localizedDescription)
+    }
+    
     func test_newPrompt_addsSuccessfulMessageToList() async throws {
         let client = FakeOpenAIClient()
         let language = UUID().uuidString

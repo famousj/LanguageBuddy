@@ -38,8 +38,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
         
         print(result)
         if case .failure(let error) = result {
-            // TODO: handle the error here
-            print("Dang, got an error: \(error)")
+            await setError(error)
             return
         }
         
@@ -52,5 +51,11 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @MainActor
     private func addToMessages(message: Message) {
         messages.append(message)
+    }
+    
+    @MainActor
+    private func setError(_ error: OpenAIError) {
+        chatError = error
+        showChatError = true
     }
 }

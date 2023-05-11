@@ -11,3 +11,5 @@ extension Usage: Codable {
         case totalTokens = "total_tokens"
     }
 }
+
+extension Usage: Equatable {}

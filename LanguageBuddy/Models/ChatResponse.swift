@@ -8,3 +8,4 @@ struct ChatResponse {
 }
 
 extension ChatResponse: Codable {}
+extension ChatResponse: Equatable {}

@@ -7,3 +7,4 @@ struct OpenAIErrorDetails {
 }
 
 extension OpenAIErrorDetails: Codable {}
+extension OpenAIErrorDetails: Equatable {}

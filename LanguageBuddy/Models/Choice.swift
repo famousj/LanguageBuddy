@@ -12,3 +12,5 @@ extension Choice: Codable {
         case finishReason = "finish_reason"
     }
 }
+
+extension Choice: Equatable {}

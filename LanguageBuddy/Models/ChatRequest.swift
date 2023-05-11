@@ -4,7 +4,7 @@ struct ChatRequest {
     let model: String
     let messages: [OpenAIMessage]
     let temperature: Double?
-    let topP: Double?
+    let topProbabilityMass: Double?
     let n: Int?
     let stream: Bool?
     let stop: [String]?
@@ -18,7 +18,7 @@ struct ChatRequest {
 extension ChatRequest: Codable {
     enum CodingKeys: String, CodingKey {
         case model, messages, temperature
-        case topP = "top_p"
+        case topProbabilityMass = "top_p"
         case n, stream, stop
         case maxTokens = "max_tokens"
         case presencePenalty = "presence_penalty"
@@ -33,7 +33,7 @@ extension ChatRequest {
         self.model = model
         self.messages = messages
         self.temperature = temperature
-        self.topP = nil
+        self.topProbabilityMass = nil
         self.n = nil
         self.stream = nil
         self.stop = nil

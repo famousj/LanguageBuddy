@@ -9,6 +9,9 @@ struct MessagesView<AppViewModel>: View where AppViewModel: AppViewModelable {
             PromptEntryView(appViewModel: appViewModel)
         }
         .padding()
+        .alert(isPresented: $appViewModel.showChatError,
+               error: appViewModel.chatError,
+               actions: {})
     }
 }
 

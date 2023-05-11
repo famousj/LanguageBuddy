@@ -49,7 +49,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
                 await addToMessages(message: replyMessage)
             }
         }
-        disablePrompt = false
+        await setDisablePrompt(false)
     }
     
     @MainActor
@@ -61,5 +61,10 @@ class AppViewModel: ObservableObject, AppViewModelable {
     private func setError(_ error: OpenAIError) {
         chatError = error
         showChatError = true
+    }
+    
+    @MainActor
+    private func setDisablePrompt(_ value: Bool) {
+        disablePrompt = value
     }
 }

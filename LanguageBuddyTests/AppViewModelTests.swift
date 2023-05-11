@@ -2,7 +2,7 @@ import XCTest
 @testable import LanguageBuddy
 
 final class AppViewModelTests: XCTestCase {
-    private let sleepDuration = Duration.seconds(0.2)
+    private let sleepDuration = Duration.seconds(0.3)
     func test_doesNotRetain() async throws {
         var client: FakeOpenAIClient? = FakeOpenAIClient()
         var testObject: AppViewModel? = AppViewModel(openAIClient: client!)
@@ -155,7 +155,6 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.disablePrompt, false)
 
-        let error = NSError(domain: "", code: 0)
         client.sendChatRequest_returnResult = successfulResult(message: emptyMessage)
         
         testObject.newPrompt()

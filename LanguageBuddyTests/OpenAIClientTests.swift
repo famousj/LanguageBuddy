@@ -21,7 +21,8 @@ final class OpenAIClientTests: XCTestCase {
         let headerFields = request?.allHTTPHeaderFields!
         let actualHeaderKeys = Array(headerFields!.keys)
         let expectedHeaderKeys = ["Authorization", "Content-Type"]
-        XCTAssertEqual(actualHeaderKeys, expectedHeaderKeys)
+        XCTAssertEqual(actualHeaderKeys.sorted(),
+                       expectedHeaderKeys.sorted())
         
         let requestBody: Data = (request?.httpBody)!
         let actualChatRequest = try JSONDecoder().decode(ChatRequest.self, from: requestBody)

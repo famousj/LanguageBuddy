@@ -7,6 +7,7 @@ struct OpenAIMessage {
 }
 
 extension OpenAIMessage: Codable {}
+extension OpenAIMessage: Equatable {}
 
 extension OpenAIMessage {
     init(message: Message) {

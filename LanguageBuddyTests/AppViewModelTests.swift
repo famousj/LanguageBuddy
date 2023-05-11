@@ -15,7 +15,7 @@ final class AppViewModelTests: XCTestCase {
         
         let message = testObject.messages.first
         let expectedMessage = Message(role: .user, content: prompt)
-        XCTAssert(message!.isEqualTo(expectedMessage))
+        expectedMessage.assertEqual(to: message)
     }
     
     func test_newPrompt_clearsCurrentPrompt() {

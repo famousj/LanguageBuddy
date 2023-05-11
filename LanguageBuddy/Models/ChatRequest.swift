@@ -29,10 +29,10 @@ extension ChatRequest: Codable {
 }
 
 extension ChatRequest {
-    init(model: String, messages: [OpenAIMessage], temperature: Double) {
+    init(model: String, messages: [OpenAIMessage]) {
         self.model = model
         self.messages = messages
-        self.temperature = temperature
+        self.temperature = nil
         self.topProbabilityMass = nil
         self.n = nil
         self.stream = nil
@@ -42,6 +42,5 @@ extension ChatRequest {
         self.frequencyPenalty = nil
         self.logitBias = nil
         self.user = nil
-
     }
 }

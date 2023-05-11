@@ -1,10 +1,10 @@
-import Foundation
+import XCTest
 @testable import LanguageBuddy
 
 extension Message {
-    func isEqualTo(_ message: Message) -> Bool {
-        self.role == message.role &&
-        self.content == message.content &&
-        self.name == message.name
+    func assertEqual(to message: Message?) {
+        XCTAssertEqual(self.role, message?.role)
+        XCTAssertEqual(self.content, message?.content)
+        XCTAssertEqual(self.name, message?.name)
     }
 }

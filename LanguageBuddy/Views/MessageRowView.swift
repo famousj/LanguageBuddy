@@ -24,7 +24,7 @@ struct MessageRowView: View {
 struct MessageRowView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            MessageRowView(message: Message.preview)
+            MessageRowView(message: Message.random)
             MessageRowView(message: Message(role: .assistant,
                                             content: "Some content",
                                             name: "Frank"))

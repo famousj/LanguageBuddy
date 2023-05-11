@@ -13,10 +13,10 @@ final class MessageCreatorTests: XCTestCase {
         
         let preface = messages.first
         let expectedPreface = Message(role: .user, content: "This question is about \(language).")
-        XCTAssert(preface!.isEqualTo(expectedPreface))
+        expectedPreface.assertEqual(to: preface)
         
         let message = messages.last
         let expectedMessage = Message(role: .user, content: prompt)
-        XCTAssert(message!.isEqualTo(expectedMessage))
+        expectedMessage.assertEqual(to: message)
     }
 }

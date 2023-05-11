@@ -7,7 +7,8 @@ struct OpenAIClient: OpenAIClientable {
     }
     
     var defaultModel: String {
-        "gpt-3.5-turbo"
+//        "gpt-3.5-turbo"
+        "gpt-4"
     }
     
     var defaultTemperature: Double {

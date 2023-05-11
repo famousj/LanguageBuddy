@@ -58,6 +58,7 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.messages.count, 0)
         XCTAssertEqual(client.sendChatRequest_calledCount, 0)
+        XCTAssertEqual(testObject.disablePrompt, false)
     }
     
     func test_newPrompt_sendsMessagesToClient() async throws {
@@ -125,6 +126,49 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.messages.count, 2)
         XCTAssertEqual(testObject.messages.last, newMessage)
+    }
+    
+    func test_newPrompt_disablesAndEnablesOnError() async throws {
+        let client = FakeOpenAIClient()
+        let testObject = AppViewModel(openAIClient: client)
+
+        testObject.currentPrompt = String.random
+        
+        XCTAssertEqual(testObject.disablePrompt, false)
+
+        client.sendChatRequest_returnResult = failureResult
+        
+        testObject.newPrompt()
+        
+        XCTAssertEqual(testObject.disablePrompt, true)
+        
+        try await Task.sleep(for: sleepDuration)
+
+        XCTAssertEqual(testObject.disablePrompt, false)
+    }
+    
+    func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
+        let client = FakeOpenAIClient()
+        let testObject = AppViewModel(openAIClient: client)
+
+        testObject.currentPrompt = String.random
+        
+        XCTAssertEqual(testObject.disablePrompt, false)
+
+        let error = NSError(domain: "", code: 0)
+        client.sendChatRequest_returnResult = successfulResult(message: emptyMessage)
+        
+        testObject.newPrompt()
+        
+        XCTAssertEqual(testObject.disablePrompt, true)
+        
+        try await Task.sleep(for: sleepDuration)
+
+        XCTAssertEqual(testObject.disablePrompt, false)
+    }
+    
+    private var emptyMessage: Message {
+        Message(role: .assistant, content: "")
     }
     
     private func successfulResult(message: Message) -> ChatResult {

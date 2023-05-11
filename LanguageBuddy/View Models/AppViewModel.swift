@@ -8,6 +8,8 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var showChatError = false
     var chatError: OpenAIError?
     
+    @Published var disablePrompt = false
+    
     private static let defaultLanguage = "European Portuguese"
     let language: String
     
@@ -21,6 +23,8 @@ class AppViewModel: ObservableObject, AppViewModelable {
     
     func newPrompt() {
         guard currentPrompt != "" else { return }
+        
+        disablePrompt = true
         
         messages.append(Message(role: .user, content: currentPrompt))
 
@@ -37,15 +41,15 @@ class AppViewModel: ObservableObject, AppViewModelable {
         let result = await openAIClient.sendChatRequest(messages: messages)
         
         print(result)
-        if case .failure(let error) = result {
+        switch result {
+        case .failure(let error):
             await setError(error)
-            return
+        case .success(let result):
+            if let replyMessage = result.choices.first?.message  {
+                await addToMessages(message: replyMessage)
+            }
         }
-        
-        guard case let .success(result) = result,
-            let replyMessage = result.choices.first?.message else { return }
-        
-        await addToMessages(message: replyMessage)
+        disablePrompt = false
     }
     
     @MainActor

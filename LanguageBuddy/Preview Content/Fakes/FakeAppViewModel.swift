@@ -1,6 +1,8 @@
 import Foundation
 
 class FakeAppViewModel: AppViewModelable {
+    var disablePrompt = false
+    
     @Published var showChatError: Bool = false
     var chatError: OpenAIError?
     

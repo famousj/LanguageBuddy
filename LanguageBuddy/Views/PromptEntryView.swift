@@ -21,7 +21,7 @@ where AppViewModel: AppViewModelable {
             }
         }
         .padding(10)
-        .disabled(appViewModel.disablePrompt)
+        .disabled(appViewModel.isPromptDisabled)
         .onAppear {
             promptIsFocused = true
         }

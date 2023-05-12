@@ -8,7 +8,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var showChatError = false
     var chatError: OpenAIError?
     
-    @Published var disablePrompt = true
+    @Published var isPromptDisabled = true
     
     @Published var userSettings: UserSettings?
     
@@ -44,7 +44,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
         
         guard currentPrompt != "" else { return }
         
-        disablePrompt = true
+        isPromptDisabled = true
         
         messages.append(Message(role: .user, content: currentPrompt))
 
@@ -89,7 +89,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
     
     @MainActor
     private func setDisablePrompt(_ value: Bool) {
-        disablePrompt = value
+        isPromptDisabled = value
     }
     @MainActor
     private func setUserSettings(_ value: UserSettings) {

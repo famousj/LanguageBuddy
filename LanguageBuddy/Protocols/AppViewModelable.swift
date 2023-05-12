@@ -4,7 +4,7 @@ protocol AppViewModelable: ObservableObject {
     var showChatError: Bool { get set }
     var chatError: OpenAIError? { get }
     
-    var disablePrompt: Bool { get set }
+    var isPromptDisabled: Bool { get set }
     
     var messages: [Message] { get }
     var currentPrompt: String { get set }

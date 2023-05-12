@@ -34,12 +34,12 @@ final class AppViewModelTests: XCTestCase {
                                         model: Model.allCases.randomElement()!)
         userSettingsStore.load_returnUserSettings = userSettings
         
-        XCTAssertEqual(testObject.disablePrompt, true)
+        XCTAssertEqual(testObject.isPromptDisabled, true)
         
         await testObject.loadUserSettings()
         XCTAssertEqual(userSettingsStore.load_calledCount, 1)
         XCTAssertEqual(testObject.userSettings, userSettings)
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
     }
 
     func test_loadUserSettings_onError_usesDefault() async {
@@ -51,7 +51,7 @@ final class AppViewModelTests: XCTestCase {
         await testObject.loadUserSettings()
         XCTAssertEqual(testObject.userSettings,
                        UserSettings.defaultSettings)
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     func test_newPrompt_addsNewMessage() async {
@@ -98,7 +98,7 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.messages.count, 0)
         XCTAssertEqual(client.sendChatRequest_calledCount, 0)
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     func test_newPrompt_sendsMessagesToClient() async throws {
@@ -183,17 +183,17 @@ final class AppViewModelTests: XCTestCase {
 
         testObject.currentPrompt = String.random
         
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
 
         client.sendChatRequest_returnResult = failureResult
         
         testObject.newPrompt()
         
-        XCTAssertEqual(testObject.disablePrompt, true)
+        XCTAssertEqual(testObject.isPromptDisabled, true)
         
         try await Task.sleep(for: sleepDuration)
 
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
@@ -204,17 +204,17 @@ final class AppViewModelTests: XCTestCase {
 
         testObject.currentPrompt = String.random
         
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
 
         client.sendChatRequest_returnResult = successfulResult(message: emptyMessage)
         
         testObject.newPrompt()
         
-        XCTAssertEqual(testObject.disablePrompt, true)
+        XCTAssertEqual(testObject.isPromptDisabled, true)
         
         try await Task.sleep(for: sleepDuration)
 
-        XCTAssertEqual(testObject.disablePrompt, false)
+        XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     private var emptyMessage: Message {

@@ -8,3 +8,22 @@ enum Model: String {
 extension Model: Codable {}
 
 extension Model: CaseIterable {}
+
+extension Model: Identifiable {
+    var id: String {
+        self.rawValue
+    }
+}
+
+extension Model {
+    var name: String {
+        switch self {
+        case .gpt3:
+            return "GPT-3"
+        case .gpt4:
+            return "GPT-4"
+            
+        }
+    }
+}
+

@@ -1,8 +1,8 @@
 import Foundation
 
 struct UserSettings {
-    let language: String
-    let model: Model
+    var language: String
+    var model: Model
     
     static var defaultSettings: UserSettings {
         UserSettings(language: "European Portuguese", model: .gpt4)
@@ -11,3 +11,9 @@ struct UserSettings {
 
 extension UserSettings: Codable {}
 extension UserSettings: Equatable {}
+
+extension UserSettings {
+    static var empty: UserSettings {
+        UserSettings(language: "", model: .gpt4)
+    }
+}

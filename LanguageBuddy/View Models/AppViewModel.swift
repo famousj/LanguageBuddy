@@ -9,8 +9,10 @@ class AppViewModel: ObservableObject, AppViewModelable {
     var chatError: OpenAIError?
     
     @Published var isPromptDisabled = true
+    @Published var isUserSettingsPresented = false
     
-    @Published var userSettings: UserSettings?
+    @Published var userSettings = UserSettings.empty
+    @Published var editingUserSettings = UserSettings.empty
     
     private let openAIClient: OpenAIClientable
     private let userSettingsStore: UserSettingsStorable
@@ -29,19 +31,10 @@ class AppViewModel: ObservableObject, AppViewModelable {
     }
     
     func saveUserSettings() async {
-        guard let userSettings = userSettings else {
-            return
-        }
-        
         try? await userSettingsStore.save(userSettings: userSettings)
     }
     
     func newPrompt() {
-        guard let userSettings = userSettings else {
-            print("Trying to send a prompt before we've loaded the user settings!")
-            return
-        }
-        
         guard currentPrompt != "" else { return }
         
         isPromptDisabled = true
@@ -74,6 +67,24 @@ class AppViewModel: ObservableObject, AppViewModelable {
             }
         }
         await setDisablePrompt(false)
+    }
+    
+    func showEditUserSettings() {
+        editingUserSettings = userSettings
+        isUserSettingsPresented = true
+    }
+
+    func cancelEditUserSettings() {
+        isUserSettingsPresented = false
+    }
+
+    func doneWithEditUserSettings() {
+        userSettings = editingUserSettings
+        Task {
+            await saveUserSettings()
+        }
+
+        isUserSettingsPresented = false
     }
     
     @MainActor

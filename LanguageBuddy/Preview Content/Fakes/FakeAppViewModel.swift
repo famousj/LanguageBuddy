@@ -1,7 +1,11 @@
 import Foundation
 
 class FakeAppViewModel: AppViewModelable {
+    
     var isPromptDisabled = false
+    var isUserSettingsPresented = false
+    
+    var userSettings = UserSettings.defaultSettings
     
     @Published var showChatError: Bool = false
     var chatError: OpenAIError?
@@ -18,4 +22,18 @@ class FakeAppViewModel: AppViewModelable {
     
     func loadUserSettings() async {}
     func saveUserSettings() async {}
+    
+    var editingUserSettings = UserSettings.empty
+    
+    func showEditUserSettings() {
+        isUserSettingsPresented = true
+    }
+
+    func cancelEditUserSettings() {
+        isUserSettingsPresented = false
+    }
+    
+    func doneWithEditUserSettings() {
+        isUserSettingsPresented = false
+    }
 }

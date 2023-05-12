@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UserSettingsView: View {
-    @State var userSettings: UserSettings
+    @Binding var userSettings: UserSettings
     
     var body: some View {
         Form {
@@ -18,6 +18,6 @@ struct UserSettingsView: View {
 
 struct UserSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSettingsView(userSettings: UserSettings.empty)
+        UserSettingsView(userSettings: .constant(UserSettings.empty))
     }
 }

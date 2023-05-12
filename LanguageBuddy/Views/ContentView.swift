@@ -4,10 +4,12 @@ struct ContentView<AppViewModel>: View where AppViewModel: AppViewModelable {
     @StateObject var appViewModel: AppViewModel
 
     var body: some View {
-        MessagesView(appViewModel: appViewModel)
-            .task {
-                await appViewModel.loadUserSettings()
-            }
+        NavigationStack {
+            MessagesView(appViewModel: appViewModel)
+                .task {
+                    await appViewModel.loadUserSettings()
+                }
+        }
     }
 }
 

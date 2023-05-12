@@ -217,6 +217,66 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
+    func test_showEditUserSettings_showsUserSettingsEdit() async {
+        let userSettingsStore = FakeUserSettingsStore()
+        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+                                      userSettingsStore: userSettingsStore)
+        
+        let userSettings = UserSettings.random
+        userSettingsStore.load_returnUserSettings = userSettings
+        await testObject.loadUserSettings()
+        
+        testObject.editingUserSettings = UserSettings.random
+        testObject.isUserSettingsPresented = false
+        
+        testObject.showEditUserSettings()
+        
+        XCTAssertEqual(testObject.editingUserSettings, userSettings)
+        XCTAssertEqual(testObject.isUserSettingsPresented, true)
+
+    }
+    
+    func test_cancelEditUserSettings_cancelsUserSettingsEdit() async {
+        let userSettingsStore = FakeUserSettingsStore()
+        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+                                      userSettingsStore: userSettingsStore)
+        
+        let userSettings = UserSettings.random
+        userSettingsStore.load_returnUserSettings = userSettings
+        await testObject.loadUserSettings()
+        
+        testObject.editingUserSettings = UserSettings.random
+        testObject.isUserSettingsPresented = true
+        
+        testObject.cancelEditUserSettings()
+        
+        XCTAssertEqual(testObject.userSettings, userSettings)
+        XCTAssertEqual(testObject.isUserSettingsPresented, false)
+    }
+    
+    func test_doneWithEditUserSettings_savesAndExits() async throws {
+        let userSettingsStore = FakeUserSettingsStore()
+        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+                                      userSettingsStore: userSettingsStore)
+        
+        userSettingsStore.load_returnUserSettings = UserSettings.random
+        await testObject.loadUserSettings()
+        
+        let updatedUserSettings = UserSettings.random
+        testObject.editingUserSettings = updatedUserSettings
+        testObject.isUserSettingsPresented = true
+        
+        testObject.doneWithEditUserSettings()
+
+        try await Task.sleep(for: sleepDuration)
+        
+        XCTAssertEqual(userSettingsStore.save_calledCount, 1)
+        XCTAssertEqual(userSettingsStore.save_paramUserSettings, updatedUserSettings)
+        
+        XCTAssertEqual(testObject.userSettings, updatedUserSettings)
+        XCTAssertEqual(testObject.isUserSettingsPresented, false)
+    }
+    
     private var emptyMessage: Message {
         Message(role: .assistant, content: "")
     }

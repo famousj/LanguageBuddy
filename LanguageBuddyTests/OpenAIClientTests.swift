@@ -29,7 +29,7 @@ final class OpenAIClientTests: XCTestCase {
         let requestBody: Data = (request?.httpBody)!
         let actualChatRequest = try JSONDecoder().decode(ChatRequest.self, from: requestBody)
         
-        XCTAssertEqual(actualChatRequest.model, model.rawValue)
+        XCTAssertEqual(actualChatRequest.model, model)
         
         let expectedMessages = messages
             .map { OpenAIMessage(message: $0) }

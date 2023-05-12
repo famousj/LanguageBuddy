@@ -15,7 +15,7 @@ struct OpenAIClient: OpenAIClientable {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let openAIMessages = messages.map { OpenAIMessage(message: $0) }
-        let chatRequest = ChatRequest(model: model.rawValue,
+        let chatRequest = ChatRequest(model: model,
                                       messages: openAIMessages)
         urlRequest.httpBody = try! JSONEncoder().encode(chatRequest)
         

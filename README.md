@@ -24,15 +24,14 @@ Then go to the file `LanguageBuddy/Models/OpenAIClient.swift`.  At the top there
 
 Now you can build the app and run it on your device.
 
-## TODO
 
-- The app is currently hard-coded to "European Portuguese", because
-  that's what I'm learning.  I'm adding the ability to freehand any
-  language you want.  Brazilian Portuguese, Finnish, Klingon, English as
-  spoken in Scotland, whatever.
+## Running
 
-  In the meantime, you can change this value in the file `LanguageBuddy/View Models/AppViewModel.swift`.
+Go into the settings and enter whatever language you want to know.
+French, Sanskrit, Klingon, English as spoken in Scotland.  Whatever.
 
-- Many other features coming soon.
+Then ask a question.  
+
+
 
 

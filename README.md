@@ -30,8 +30,12 @@ Now you can build the app and run it on your device.
 Go into the settings and enter whatever language you want to know.
 French, Sanskrit, Klingon, English as spoken in Scotland.  Whatever.
 
-Then ask a question.  
+Then ask a question.  Some things you might ask:
 
+- "What does tremoço mean?"
 
+- "Conjugate the verb jogar in the present tense"
 
+- "How would I ask my dog to come here?"
 
+- "What's the difference between aquí and cá?"

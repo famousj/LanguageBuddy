@@ -15,7 +15,6 @@ protocol AppViewModelable: ObservableObject {
     func newPrompt()
 
     func loadUserSettings() async
-    func saveUserSettings() async
     
     var editingUserSettings: UserSettings { get set }
     func showEditUserSettings()

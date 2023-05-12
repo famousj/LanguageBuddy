@@ -30,7 +30,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
         await setDisablePrompt(false)
     }
     
-    func saveUserSettings() async {
+    private func saveUserSettings() async {
         try? await userSettingsStore.save(userSettings: userSettings)
     }
     

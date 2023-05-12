@@ -21,7 +21,6 @@ class FakeAppViewModel: AppViewModelable {
     }
     
     func loadUserSettings() async {}
-    func saveUserSettings() async {}
     
     var editingUserSettings = UserSettings.empty
     

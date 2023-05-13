@@ -14,4 +14,9 @@ struct MessageCreator: MessageCreatable {
     func messagesForPrompt(_ prompt: String) -> [Message] {
         promptSetupMessages + [Message(role: .user, content: prompt)]
     }
+    
+    func messagesForLanguageLookup(_ message: Message) -> [Message] {
+        let content = "List the phrases in this message that are \(language):\n\(message.content)"
+        return [Message(role: .user, content: content)]
+    }
 }

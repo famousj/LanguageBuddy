@@ -19,4 +19,19 @@ final class MessageCreatorTests: XCTestCase {
         let expectedMessage = Message(role: .user, content: prompt)
         expectedMessage.assertEqual(to: message)
     }
+    
+    func test_messagesForLanguageLookup_returnsCorrectMessages() {
+        let language = "Urdu"
+        let testObject = MessageCreator(language: language)
+        
+        let content = String.random
+        let message = Message(role: .assistant, content: content)
+        
+        let messages = testObject.messagesForLanguageLookup(message)
+        
+        let expectedContent = "List the phrases in this message that are \(language):\n\(content)"
+        let expectedMessage = Message(role: .user, content: expectedContent)
+        
+        [expectedMessage].assertEqual(to: messages)
+    }
 }

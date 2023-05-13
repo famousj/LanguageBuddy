@@ -4,7 +4,7 @@ struct MessageCreator: MessageCreatable {
     let language: String
     
     var languageIntroduction: String {
-        "This question is about \(language)."
+        "I am learning \(language)"
     }
     
     private var promptSetupMessages: [Message] {

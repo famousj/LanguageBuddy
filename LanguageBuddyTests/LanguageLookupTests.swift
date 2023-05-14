@@ -10,7 +10,7 @@ final class LanguageLookupTests: XCTestCase {
         let language = UUID().uuidString
         let prompt = String.random
         
-        client.sendChatRequest_returnResult = .failureResult
+        client.sendChatRequest_returnResults = [.failureResult]
 
         let _ = await testObject.lookupPrompt(model: model,
                                               language: language,
@@ -36,7 +36,7 @@ final class LanguageLookupTests: XCTestCase {
                                                code: nil)
         let expectedError = OpenAIError.serverError(expectedDetails)
         let expectedResult = ChatResult.failure(expectedError)
-        client.sendChatRequest_returnResult = expectedResult
+        client.sendChatRequest_returnResults = [expectedResult]
 
         let result = await testObject.lookupPrompt(model: Model.random,
                                                    language: UUID().uuidString,
@@ -55,7 +55,7 @@ final class LanguageLookupTests: XCTestCase {
 
         let expectedResponse = ChatResponse.random(with: Message.random)
         let expectedResult = ChatResult.success(expectedResponse)
-        client.sendChatRequest_returnResult = expectedResult
+        client.sendChatRequest_returnResults = [expectedResult]
 
         let result = await testObject.lookupPrompt(model: Model.random,
                                                    language: UUID().uuidString,

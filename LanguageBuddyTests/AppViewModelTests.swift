@@ -2,26 +2,25 @@ import XCTest
 @testable import LanguageBuddy
 
 final class AppViewModelTests: XCTestCase {
-    private let sleepDuration = Duration.seconds(0.3)
     func test_doesNotRetain() async throws {
-        var client: FakeOpenAIClient? = FakeOpenAIClient()
+        var languageLookup: FakeLanguageLookup? = FakeLanguageLookup()
         var userSettingsStore: FakeUserSettingsStore? = FakeUserSettingsStore()
-        var testObject: AppViewModel? = AppViewModel(openAIClient: client!,
+        var testObject: AppViewModel? = AppViewModel(languageLookup: languageLookup!,
                                                      userSettingsStore: userSettingsStore!)
 
         userSettingsStore?.load_returnUserSettings = UserSettings.random
         await testObject?.loadUserSettings()
 
         testObject?.currentPrompt = String.random
-        client?.sendChatRequest_returnResult = failureResult
+        languageLookup?.lookupPrompt_returnResult = .failureResult
 
         testObject?.newPrompt()
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
                 
         weak var weakTestObject = testObject
         testObject = nil
-        client = nil
+        languageLookup = nil
         userSettingsStore = nil
         XCTAssertNil(weakTestObject)
     }
@@ -55,7 +54,7 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_newPrompt_addsNewMessage() async {
-        let testObject = AppViewModel(openAIClient: emptyClient,
+        let testObject = AppViewModel(languageLookup: failureLookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         
         XCTAssertEqual(testObject.messages.count, 0)
@@ -73,7 +72,7 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_newPrompt_clearsCurrentPrompt() async {
-        let testObject = AppViewModel(openAIClient: emptyClient,
+        let testObject = AppViewModel(languageLookup: failureLookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -85,8 +84,8 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_newPrompt_whenCurrentPromptIsEmpty_noAction() async throws {
-        let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client,
+        let lookup = FakeLanguageLookup()
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -94,43 +93,43 @@ final class AppViewModelTests: XCTestCase {
         
         testObject.newPrompt()
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
         
         XCTAssertEqual(testObject.messages.count, 0)
-        XCTAssertEqual(client.sendChatRequest_calledCount, 0)
+        XCTAssertEqual(lookup.lookupPrompt_calledCount, 0)
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
-    func test_newPrompt_sendsMessagesToClient() async throws {
-        let client = FakeOpenAIClient()
+    func test_newPrompt_looksUpPrompt() async throws {
+        let lookup = FakeLanguageLookup()
         let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(openAIClient: client,
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStore)
         
-        let userSettings = UserSettings.random
+        
+        let language = UUID().uuidString
+        let userSettings = UserSettings(language: language,
+                                        model: .gpt3)
         userSettingsStore.load_returnUserSettings = userSettings
         await testObject.loadUserSettings()
-
+                
         let prompt = String.random
         testObject.currentPrompt = prompt
         
-        client.sendChatRequest_returnResult = failureResult
-        
+        lookup.lookupPrompt_returnResult = .failureResult
+
         testObject.newPrompt()
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
         
-        XCTAssertEqual(client.sendChatRequest_calledCount, 1)
-        
-        let expectedMessages = MessageCreator(language: userSettings.language)
-            .messagesForPrompt(prompt)
-
-        client.sendChatRequest_paramMessages?.assertEqual(to: expectedMessages)
+        XCTAssertEqual(lookup.lookupPrompt_calledCount, 1)
+        XCTAssertEqual(lookup.lookupPrompt_paramLanguage, language)
+        XCTAssertEqual(lookup.lookupPrompt_paramPrompt, prompt)
     }
     
     func test_newPrompt_whenChatFails_displaysError() async throws {
-        let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client,
+        let lookup = FakeLanguageLookup()
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -143,11 +142,11 @@ final class AppViewModelTests: XCTestCase {
                                               param: nil,
                                               code: nil)
         let expectedError = OpenAIError.serverError(expectedDetails)
-        client.sendChatRequest_returnResult = .failure(expectedError)
+        lookup.lookupPrompt_returnResult = .failure(expectedError)
         
         testObject.newPrompt()
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
 
         XCTAssertEqual(testObject.showChatError, true)
         
@@ -156,8 +155,8 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_newPrompt_addsSuccessfulMessageToList() async throws {
-        let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client,
+        let lookup = FakeLanguageLookup()
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -165,19 +164,19 @@ final class AppViewModelTests: XCTestCase {
         testObject.currentPrompt = prompt
         
         let newMessage = Message.random
-        client.sendChatRequest_returnResult = successfulResult(message: newMessage)
+        lookup.lookupPrompt_returnResult = .successResult(message: newMessage)
         
         testObject.newPrompt()
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
         
         XCTAssertEqual(testObject.messages.count, 2)
         XCTAssertEqual(testObject.messages.last, newMessage)
     }
     
     func test_newPrompt_disablesAndEnablesOnError() async throws {
-        let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client,
+        let lookup = FakeLanguageLookup()
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -185,20 +184,20 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.isPromptDisabled, false)
 
-        client.sendChatRequest_returnResult = failureResult
+        lookup.lookupPrompt_returnResult = .failureResult
         
         testObject.newPrompt()
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
 
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
-        let client = FakeOpenAIClient()
-        let testObject = AppViewModel(openAIClient: client,
+        let lookup = FakeLanguageLookup()
+        let testObject = AppViewModel(languageLookup: lookup,
                                       userSettingsStore: userSettingsStoreWithSettings)
         await testObject.loadUserSettings()
 
@@ -206,20 +205,20 @@ final class AppViewModelTests: XCTestCase {
         
         XCTAssertEqual(testObject.isPromptDisabled, false)
 
-        client.sendChatRequest_returnResult = successfulResult(message: emptyMessage)
+        lookup.lookupPrompt_returnResult = .successResult(message: emptyMessage)
         
         testObject.newPrompt()
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
 
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
     func test_showEditUserSettings_showsUserSettingsEdit() async {
         let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+        let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
                                       userSettingsStore: userSettingsStore)
         
         let userSettings = UserSettings.random
@@ -238,7 +237,7 @@ final class AppViewModelTests: XCTestCase {
     
     func test_cancelEditUserSettings_cancelsUserSettingsEdit() async {
         let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+        let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
                                       userSettingsStore: userSettingsStore)
         
         let userSettings = UserSettings.random
@@ -256,7 +255,7 @@ final class AppViewModelTests: XCTestCase {
     
     func test_doneWithEditUserSettings_savesAndExits() async throws {
         let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(openAIClient: FakeOpenAIClient(),
+        let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
                                       userSettingsStore: userSettingsStore)
         
         userSettingsStore.load_returnUserSettings = UserSettings.random
@@ -268,7 +267,7 @@ final class AppViewModelTests: XCTestCase {
         
         testObject.doneWithEditUserSettings()
 
-        try await Task.sleep(for: sleepDuration)
+        try await Task.sleep(for: .SleepDuration)
         
         XCTAssertEqual(userSettingsStore.save_calledCount, 1)
         XCTAssertEqual(userSettingsStore.save_paramUserSettings, updatedUserSettings)
@@ -281,29 +280,10 @@ final class AppViewModelTests: XCTestCase {
         Message(role: .assistant, content: "")
     }
     
-    private func successfulResult(message: Message) -> ChatResult {
-        let choice = Choice(index: 0,
-                            message: message,
-                            finishReason: "")
-        let usage = Usage(promptTokens: 0,
-                          completionTokens: 0,
-                          totalTokens: 0)
-        let response = ChatResponse(id: "",
-                            object: "",
-                            created: 0,
-                            choices: [choice],
-                            usage: usage)
-        return .success(response)
-    }
-    
-    private var failureResult: ChatResult {
-        return .failure(.decodingError(NSError(domain: "", code: 0)))
-    }
-    
-    private var emptyClient: FakeOpenAIClient {
-        let client = FakeOpenAIClient()
-        client.sendChatRequest_returnResult = failureResult
-        return client
+    private var failureLookup: FakeLanguageLookup {
+        let lookup = FakeLanguageLookup()
+        lookup.lookupPrompt_returnResult = .failureResult
+        return lookup
     }
     
     private var userSettingsStoreWithSettings: UserSettingsStorable {

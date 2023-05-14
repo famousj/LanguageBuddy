@@ -4,7 +4,7 @@ import Foundation
 class FakeOpenAIClient: OpenAIClientable {
     var sendChatRequest_calledCount = 0
     var sendChatRequest_paramModel: Model?
-    var sendChatRequest_paramMessages: [Message]?
+    var sendChatRequest_paramMessages = [Message]()
     var sendChatRequest_returnResult: ChatResult?
     func sendChatRequest(model: Model,
                          messages: [LanguageBuddy.Message],

@@ -14,12 +14,14 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var userSettings = UserSettings.empty
     @Published var editingUserSettings = UserSettings.empty
     
-    private let openAIClient: OpenAIClientable
+    private let languageLookup: LanguageLookupable
     private let userSettingsStore: UserSettingsStorable
     
-    init(openAIClient: OpenAIClientable = OpenAIClient(),
+    private let modelForLanguageLookup = Model.gpt3
+    
+    init(languageLookup: LanguageLookupable = LanguageLookup(),
          userSettingsStore: UserSettingsStorable = UserSettingsStore()) {
-        self.openAIClient = openAIClient
+        self.languageLookup = languageLookup
         self.userSettingsStore = userSettingsStore
     }
     
@@ -43,29 +45,31 @@ class AppViewModel: ObservableObject, AppViewModelable {
 
         let promptToSend = currentPrompt
         Task {
-            let messages = MessageCreator(language: userSettings.language)
-                .messagesForPrompt(promptToSend)
-            await sendMessagesToClient(userSettings: userSettings,
-                                       messages: messages)
+            await processPrompt(promptToSend)
         }
         
         currentPrompt = ""
     }
+    
+    private func processPrompt(_ prompt: String) async {
+        let result = await languageLookup.lookupPrompt(model: userSettings.model,
+                                                       language: userSettings.language,
+                                                       prompt: prompt)
         
-    private func sendMessagesToClient(userSettings: UserSettings,
-                                      messages: [Message]) async {
-        let result = await openAIClient.sendChatRequest(model: userSettings.model,
-                                                        messages: messages)
-        
-        print(result)
         switch result {
         case .failure(let error):
-            await setError(error)
-        case .success(let result):
-            if let replyMessage = result.choices.first?.message  {
+            await handlePromptError(error)
+        case .success(let reply):
+            if let replyMessage = reply.choices.first?.message {
                 await addToMessages(message: replyMessage)
             }
         }
+        
+        await setDisablePrompt(false)
+    }
+
+    private func handlePromptError(_ error: OpenAIError) async {
+        await setError(error)
         await setDisablePrompt(false)
     }
     

@@ -4,6 +4,6 @@ import Foundation
 extension UserSettings {
     static var random: UserSettings {
         UserSettings(language: UUID().uuidString,
-                     model: Model.allCases.randomElement()!)
+                     model: Model.random)
     }
 }

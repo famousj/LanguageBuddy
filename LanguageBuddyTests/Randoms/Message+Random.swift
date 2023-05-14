@@ -3,6 +3,6 @@ import Foundation
 
 extension Message {
     static var random: Message {
-        Message(role: Role.allCases.randomElement()!, content: String.random, name: nil)
+        Message(role: Role.random, content: String.random, name: nil)
     }
 }

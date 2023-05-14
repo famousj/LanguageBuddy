@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D813017D2A10F86200542A14 /* LanguageLookupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813017C2A10F86200542A14 /* LanguageLookupable.swift */; };
+		D813017F2A10F8D700542A14 /* LanguageLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813017E2A10F8D700542A14 /* LanguageLookup.swift */; };
+		D81301812A10FD0700542A14 /* FakeLanguageLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301802A10FD0700542A14 /* FakeLanguageLookup.swift */; };
+		D81301832A11179500542A14 /* LanguageLookupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301822A11179500542A14 /* LanguageLookupTests.swift */; };
+		D81301862A111A8000542A14 /* ChatRequest+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301852A111A8000542A14 /* ChatRequest+Utilities.swift */; };
+		D81301882A111C8200542A14 /* Duration+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301872A111C8200542A14 /* Duration+Utilities.swift */; };
+		D813018A2A111F7C00542A14 /* CaseIterable+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301892A111F7C00542A14 /* CaseIterable+Random.swift */; };
+		D813018C2A11200900542A14 /* Role+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813018B2A11200900542A14 /* Role+Random.swift */; };
+		D813018E2A1123D800542A14 /* UserSettings+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813018D2A1123D800542A14 /* UserSettings+Random.swift */; };
 		D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */; };
 		D814E86F2A09A24C00ECCA17 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E86E2A09A24C00ECCA17 /* ChatRequest.swift */; };
 		D814E8712A0A29B300ECCA17 /* OpenAIClientable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */; };
@@ -24,12 +33,13 @@
 		D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */; };
 		D814E89A2A0AA2C900ECCA17 /* Message+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E8992A0AA2C900ECCA17 /* Message+Utilities.swift */; };
 		D814E89C2A0AAB0200ECCA17 /* OpenAIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */; };
+		D81C9C232A112DEE001E827B /* ChatResponse+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C9C222A112DEE001E827B /* ChatResponse+Utilities.swift */; };
+		D81C9C252A112EC3001E827B /* Int+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C9C242A112EC3001E827B /* Int+Random.swift */; };
 		D8310DE02A0D626600AB9FCD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DDF2A0D626600AB9FCD /* UserSettings.swift */; };
 		D8310DE22A0D629C00AB9FCD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DE12A0D629C00AB9FCD /* Model.swift */; };
 		D8310DE62A0D817E00AB9FCD /* UserSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DE52A0D817E00AB9FCD /* UserSettingsStore.swift */; };
 		D8310DE82A0D818C00AB9FCD /* UserSettingsStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DE72A0D818C00AB9FCD /* UserSettingsStorable.swift */; };
 		D8310DEA2A0D974A00AB9FCD /* FakeUserSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DE92A0D974A00AB9FCD /* FakeUserSettingsStore.swift */; };
-		D8310DEC2A0D988900AB9FCD /* UserSettings+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DEB2A0D988900AB9FCD /* UserSettings+Random.swift */; };
 		D8310DEE2A0DA14000AB9FCD /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8310DED2A0DA14000AB9FCD /* UserSettingsView.swift */; };
 		D88B499E2A0D036400C8E223 /* openai-error-response.json in Resources */ = {isa = PBXBuildFile; fileRef = D88B499D2A0D036400C8E223 /* openai-error-response.json */; };
 		D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */; };
@@ -80,6 +90,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D813017C2A10F86200542A14 /* LanguageLookupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLookupable.swift; sourceTree = "<group>"; };
+		D813017E2A10F8D700542A14 /* LanguageLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLookup.swift; sourceTree = "<group>"; };
+		D81301802A10FD0700542A14 /* FakeLanguageLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLanguageLookup.swift; sourceTree = "<group>"; };
+		D81301822A11179500542A14 /* LanguageLookupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLookupTests.swift; sourceTree = "<group>"; };
+		D81301852A111A8000542A14 /* ChatRequest+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRequest+Utilities.swift"; sourceTree = "<group>"; };
+		D81301872A111C8200542A14 /* Duration+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Duration+Utilities.swift"; sourceTree = "<group>"; };
+		D81301892A111F7C00542A14 /* CaseIterable+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Random.swift"; sourceTree = "<group>"; };
+		D813018B2A11200900542A14 /* Role+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Role+Random.swift"; sourceTree = "<group>"; };
+		D813018D2A1123D800542A14 /* UserSettings+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettings+Random.swift"; sourceTree = "<group>"; };
 		D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientTests.swift; sourceTree = "<group>"; };
 		D814E86E2A09A24C00ECCA17 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClientable.swift; sourceTree = "<group>"; };
@@ -97,12 +116,13 @@
 		D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreatorTests.swift; sourceTree = "<group>"; };
 		D814E8992A0AA2C900ECCA17 /* Message+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Utilities.swift"; sourceTree = "<group>"; };
 		D814E89B2A0AAB0200ECCA17 /* OpenAIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessage.swift; sourceTree = "<group>"; };
+		D81C9C222A112DEE001E827B /* ChatResponse+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatResponse+Utilities.swift"; sourceTree = "<group>"; };
+		D81C9C242A112EC3001E827B /* Int+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Random.swift"; sourceTree = "<group>"; };
 		D8310DDF2A0D626600AB9FCD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		D8310DE12A0D629C00AB9FCD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D8310DE52A0D817E00AB9FCD /* UserSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsStore.swift; sourceTree = "<group>"; };
 		D8310DE72A0D818C00AB9FCD /* UserSettingsStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsStorable.swift; sourceTree = "<group>"; };
 		D8310DE92A0D974A00AB9FCD /* FakeUserSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserSettingsStore.swift; sourceTree = "<group>"; };
-		D8310DEB2A0D988900AB9FCD /* UserSettings+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettings+Random.swift"; sourceTree = "<group>"; };
 		D8310DED2A0DA14000AB9FCD /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		D88B499D2A0D036400C8E223 /* openai-error-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "openai-error-response.json"; sourceTree = "<group>"; };
 		D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIErrorResponseTests.swift; sourceTree = "<group>"; };
@@ -173,8 +193,10 @@
 		D88B49AB2A0D10E100C8E223 /* Randoms */ = {
 			isa = PBXGroup;
 			children = (
+				D81301892A111F7C00542A14 /* CaseIterable+Random.swift */,
+				D81C9C242A112EC3001E827B /* Int+Random.swift */,
 				D88B49AC2A0D10EF00C8E223 /* Message+Random.swift */,
-				D8310DEB2A0D988900AB9FCD /* UserSettings+Random.swift */,
+				D813018D2A1123D800542A14 /* UserSettings+Random.swift */,
 			);
 			path = Randoms;
 			sourceTree = "<group>";
@@ -238,6 +260,7 @@
 				D814E8972A0AA1DD00ECCA17 /* MessageCreatorTests.swift */,
 				D814E86C2A09976D00ECCA17 /* OpenAIClientTests.swift */,
 				D88B499F2A0D038B00C8E223 /* OpenAIErrorResponseTests.swift */,
+				D81301822A11179500542A14 /* LanguageLookupTests.swift */,
 			);
 			path = LanguageBuddyTests;
 			sourceTree = "<group>";
@@ -280,6 +303,7 @@
 				D814E8782A0A367000ECCA17 /* Usage.swift */,
 				D8310DDF2A0D626600AB9FCD /* UserSettings.swift */,
 				D8310DE52A0D817E00AB9FCD /* UserSettingsStore.swift */,
+				D813017E2A10F8D700542A14 /* LanguageLookup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,8 +321,12 @@
 		D8E51BD72A0911AD000CCEE3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D81301852A111A8000542A14 /* ChatRequest+Utilities.swift */,
+				D81C9C222A112DEE001E827B /* ChatResponse+Utilities.swift */,
+				D81301872A111C8200542A14 /* Duration+Utilities.swift */,
 				D8E51BD52A0911A6000CCEE3 /* JSONLoader.swift */,
 				D814E8992A0AA2C900ECCA17 /* Message+Utilities.swift */,
+				D813018B2A11200900542A14 /* Role+Random.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -327,9 +355,10 @@
 			isa = PBXGroup;
 			children = (
 				D8E51BE92A0949FA000CCEE3 /* AppViewModelable.swift */,
+				D813017C2A10F86200542A14 /* LanguageLookupable.swift */,
+				D814E8932A0AA10B00ECCA17 /* MessageCreatable.swift */,
 				D814E8702A0A29B300ECCA17 /* OpenAIClientable.swift */,
 				D814E8882A0A651400ECCA17 /* URLSessionable.swift */,
-				D814E8932A0AA10B00ECCA17 /* MessageCreatable.swift */,
 				D8310DE72A0D818C00AB9FCD /* UserSettingsStorable.swift */,
 			);
 			path = Protocols;
@@ -346,9 +375,10 @@
 		D8E51BF62A095B3E000CCEE3 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
-				D88B49A52A0D080500C8E223 /* FakeURLSession.swift */,
 				D89DE3C72A0D1D5200316D72 /* FakeOpenAIClient.swift */,
+				D88B49A52A0D080500C8E223 /* FakeURLSession.swift */,
 				D8310DE92A0D974A00AB9FCD /* FakeUserSettingsStore.swift */,
+				D81301802A10FD0700542A14 /* FakeLanguageLookup.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -507,6 +537,7 @@
 				D8310DE22A0D629C00AB9FCD /* Model.swift in Sources */,
 				D814E87F2A0A3FEB00ECCA17 /* OpenAIError.swift in Sources */,
 				D814E86F2A09A24C00ECCA17 /* ChatRequest.swift in Sources */,
+				D813017D2A10F86200542A14 /* LanguageLookupable.swift in Sources */,
 				D814E8772A0A362300ECCA17 /* Choice.swift in Sources */,
 				D814E8792A0A367000ECCA17 /* Usage.swift in Sources */,
 				D8E51BF12A095981000CCEE3 /* OpenAIClient.swift in Sources */,
@@ -518,6 +549,7 @@
 				D814E8712A0A29B300ECCA17 /* OpenAIClientable.swift in Sources */,
 				D8E51BA12A090E93000CCEE3 /* LanguageBuddyApp.swift in Sources */,
 				D8E51BE12A092616000CCEE3 /* PromptEntryView.swift in Sources */,
+				D813017F2A10F8D700542A14 /* LanguageLookup.swift in Sources */,
 				D8E51BCE2A090F78000CCEE3 /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,15 +559,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				D88B49AD2A0D10EF00C8E223 /* Message+Random.swift in Sources */,
+				D81C9C252A112EC3001E827B /* Int+Random.swift in Sources */,
+				D81C9C232A112DEE001E827B /* ChatResponse+Utilities.swift in Sources */,
 				D88B49A42A0D055000C8E223 /* ChatResponseTests.swift in Sources */,
+				D813018A2A111F7C00542A14 /* CaseIterable+Random.swift in Sources */,
 				D8310DEA2A0D974A00AB9FCD /* FakeUserSettingsStore.swift in Sources */,
 				D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */,
 				D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */,
 				D814E89A2A0AA2C900ECCA17 /* Message+Utilities.swift in Sources */,
+				D81301862A111A8000542A14 /* ChatRequest+Utilities.swift in Sources */,
+				D81301832A11179500542A14 /* LanguageLookupTests.swift in Sources */,
 				D8E51BD42A0910A3000CCEE3 /* MessageTests.swift in Sources */,
-				D8310DEC2A0D988900AB9FCD /* UserSettings+Random.swift in Sources */,
+				D813018E2A1123D800542A14 /* UserSettings+Random.swift in Sources */,
 				D814E86D2A09976D00ECCA17 /* OpenAIClientTests.swift in Sources */,
 				D8E51BF52A095AE2000CCEE3 /* AppViewModelTests.swift in Sources */,
+				D81301882A111C8200542A14 /* Duration+Utilities.swift in Sources */,
+				D813018C2A11200900542A14 /* Role+Random.swift in Sources */,
+				D81301812A10FD0700542A14 /* FakeLanguageLookup.swift in Sources */,
 				D8E51BD62A0911A6000CCEE3 /* JSONLoader.swift in Sources */,
 				D88B49A62A0D080500C8E223 /* FakeURLSession.swift in Sources */,
 				D89DE3C82A0D1D5200316D72 /* FakeOpenAIClient.swift in Sources */,

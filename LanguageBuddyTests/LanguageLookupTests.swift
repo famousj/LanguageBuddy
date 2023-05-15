@@ -20,10 +20,10 @@ final class LanguageLookupTests: XCTestCase {
 
         XCTAssertEqual(client.sendChatRequest_calledCount, 1)
 
+        XCTAssertEqual(client.sendChatRequest_paramModels.first, model)
         let expectedMessages = MessageCreator(language: language)
             .messagesForPrompt(prompt)
-
-        expectedMessages.assertEqual(to: client.sendChatRequest_paramMessages)
+        expectedMessages.assertEqual(to: client.sendChatRequest_paramMessages.first!)
     }
     
     func test_lookupPrompt_whenPromptRequestFails_returnsFailure() async throws {

@@ -4,11 +4,11 @@ import XCTest
 final class AppViewModelTests: XCTestCase {
     func test_doesNotRetain() async throws {
         var languageLookup: FakeLanguageLookup? = FakeLanguageLookup()
-        var userSettingsStore: FakeUserSettingsStore? = FakeUserSettingsStore()
+        var fileStore: FakeFileStore? = FakeFileStore()
         var testObject: AppViewModel? = AppViewModel(languageLookup: languageLookup!,
-                                                     userSettingsStore: userSettingsStore!)
+                                                     fileStore: fileStore!)
 
-        userSettingsStore?.load_returnUserSettings = UserSettings.random
+        fileStore?.load_returnObject = UserSettings.random
         await testObject?.loadUserSettings()
 
         testObject?.currentPrompt = String.random
@@ -21,31 +21,31 @@ final class AppViewModelTests: XCTestCase {
         weak var weakTestObject = testObject
         testObject = nil
         languageLookup = nil
-        userSettingsStore = nil
+        fileStore = nil
         XCTAssertNil(weakTestObject)
     }
     
     func test_loadUserSettings_callsStore() async {
-        let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(userSettingsStore: userSettingsStore)
+        let fileStore = FakeFileStore()
+        let testObject = AppViewModel(fileStore: fileStore)
         
         let userSettings = UserSettings(language: UUID().uuidString,
                                         model: Model.allCases.randomElement()!)
-        userSettingsStore.load_returnUserSettings = userSettings
+        fileStore.load_returnObject = userSettings
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
         await testObject.loadUserSettings()
-        XCTAssertEqual(userSettingsStore.load_calledCount, 1)
+        XCTAssertEqual(fileStore.load_calledCount, 1)
         XCTAssertEqual(testObject.userSettings, userSettings)
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
 
     func test_loadUserSettings_onError_usesDefault() async {
-        let userSettingsStore = FakeUserSettingsStore()
-        let testObject = AppViewModel(userSettingsStore: userSettingsStore)
+        let fileStore = FakeFileStore()
+        let testObject = AppViewModel(fileStore: fileStore)
         
-        userSettingsStore.load_error = NSError(domain: "", code: 0)
+        fileStore.load_error = NSError(domain: "", code: 0)
         
         await testObject.loadUserSettings()
         XCTAssertEqual(testObject.userSettings,
@@ -55,7 +55,7 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_addsNewMessage() async {
         let testObject = AppViewModel(languageLookup: failureLookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         
         XCTAssertEqual(testObject.messages.count, 0)
         await testObject.loadUserSettings()
@@ -73,7 +73,7 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_clearsCurrentPrompt() async {
         let testObject = AppViewModel(languageLookup: failureLookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
@@ -86,7 +86,7 @@ final class AppViewModelTests: XCTestCase {
     func test_newPrompt_whenCurrentPromptIsEmpty_noAction() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         testObject.currentPrompt = ""
@@ -102,15 +102,15 @@ final class AppViewModelTests: XCTestCase {
     
     func test_newPrompt_looksUpPrompt() async throws {
         let lookup = FakeLanguageLookup()
-        let userSettingsStore = FakeUserSettingsStore()
+        let fileStore = FakeFileStore()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStore)
+                                      fileStore: fileStore)
         
         
         let language = UUID().uuidString
         let userSettings = UserSettings(language: language,
                                         model: .gpt3)
-        userSettingsStore.load_returnUserSettings = userSettings
+        fileStore.load_returnObject = userSettings
         await testObject.loadUserSettings()
                 
         let prompt = String.random
@@ -130,7 +130,7 @@ final class AppViewModelTests: XCTestCase {
     func test_newPrompt_whenChatFails_displaysError() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
@@ -157,7 +157,7 @@ final class AppViewModelTests: XCTestCase {
     func test_newPrompt_addsSuccessfulMessageToList() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         let prompt = String.random
@@ -177,7 +177,7 @@ final class AppViewModelTests: XCTestCase {
     func test_newPrompt_disablesAndEnablesOnError() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
@@ -198,7 +198,7 @@ final class AppViewModelTests: XCTestCase {
     func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup,
-                                      userSettingsStore: userSettingsStoreWithSettings)
+                                      fileStore: fileStoreWithSettings)
         await testObject.loadUserSettings()
 
         testObject.currentPrompt = String.random
@@ -217,12 +217,12 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_showEditUserSettings_showsUserSettingsEdit() async {
-        let userSettingsStore = FakeUserSettingsStore()
+        let fileStore = FakeFileStore()
         let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
-                                      userSettingsStore: userSettingsStore)
+                                      fileStore: fileStore)
         
         let userSettings = UserSettings.random
-        userSettingsStore.load_returnUserSettings = userSettings
+        fileStore.load_returnObject = userSettings
         await testObject.loadUserSettings()
         
         testObject.editingUserSettings = UserSettings.random
@@ -236,12 +236,12 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_cancelEditUserSettings_cancelsUserSettingsEdit() async {
-        let userSettingsStore = FakeUserSettingsStore()
+        let fileStore = FakeFileStore()
         let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
-                                      userSettingsStore: userSettingsStore)
+                                      fileStore: fileStore)
         
         let userSettings = UserSettings.random
-        userSettingsStore.load_returnUserSettings = userSettings
+        fileStore.load_returnObject = userSettings
         await testObject.loadUserSettings()
         
         testObject.editingUserSettings = UserSettings.random
@@ -254,11 +254,11 @@ final class AppViewModelTests: XCTestCase {
     }
     
     func test_doneWithEditUserSettings_savesAndExits() async throws {
-        let userSettingsStore = FakeUserSettingsStore()
+        let fileStore = FakeFileStore()
         let testObject = AppViewModel(languageLookup: FakeLanguageLookup(),
-                                      userSettingsStore: userSettingsStore)
+                                      fileStore: fileStore)
         
-        userSettingsStore.load_returnUserSettings = UserSettings.random
+        fileStore.load_returnObject = UserSettings.random
         await testObject.loadUserSettings()
         
         let updatedUserSettings = UserSettings.random
@@ -269,8 +269,8 @@ final class AppViewModelTests: XCTestCase {
 
         try await Task.sleep(for: .SleepDuration)
         
-        XCTAssertEqual(userSettingsStore.save_calledCount, 1)
-        XCTAssertEqual(userSettingsStore.save_paramUserSettings, updatedUserSettings)
+        XCTAssertEqual(fileStore.save_calledCount, 1)
+        XCTAssertEqual(fileStore.save_paramObject as? UserSettings, updatedUserSettings)
         
         XCTAssertEqual(testObject.userSettings, updatedUserSettings)
         XCTAssertEqual(testObject.isUserSettingsPresented, false)
@@ -286,9 +286,9 @@ final class AppViewModelTests: XCTestCase {
         return lookup
     }
     
-    private var userSettingsStoreWithSettings: UserSettingsStorable {
-        let store = FakeUserSettingsStore()
-        store.load_returnUserSettings = UserSettings.random
+    private var fileStoreWithSettings: FileStorable {
+        let store = FakeFileStore()
+        store.load_returnObject = UserSettings.random
         return store
     }
 }

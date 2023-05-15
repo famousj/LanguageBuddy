@@ -15,25 +15,25 @@ class AppViewModel: ObservableObject, AppViewModelable {
     @Published var editingUserSettings = UserSettings.empty
     
     private let languageLookup: LanguageLookupable
-    private let userSettingsStore: UserSettingsStorable
+    private let fileStore: FileStorable
     
     private let modelForLanguageLookup = Model.gpt3
     
     init(languageLookup: LanguageLookupable = LanguageLookup(),
-         userSettingsStore: UserSettingsStorable = UserSettingsStore()) {
+         fileStore: FileStorable = FileStore()) {
         self.languageLookup = languageLookup
-        self.userSettingsStore = userSettingsStore
+        self.fileStore = fileStore
     }
     
     func loadUserSettings() async {
-        let userSettings = (try? await userSettingsStore.load()) ??
+        let userSettings: UserSettings = (try? await fileStore.load()) ??
         UserSettings.defaultSettings
         await setUserSettings(userSettings)
         await setDisablePrompt(false)
     }
     
     private func saveUserSettings() async {
-        try? await userSettingsStore.save(userSettings: userSettings)
+        try? await fileStore.save(userSettings)
     }
     
     func newPrompt() {

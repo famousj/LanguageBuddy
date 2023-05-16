@@ -13,8 +13,8 @@ where AppViewModel: AppViewModelable {
                 .border(Color.gray, width: 2)
                 .cornerRadius(4)
                 .focused($promptIsFocused)
-                .onSubmit { newPrompt() }
-            Button(action: { newPrompt() }) {
+                .onSubmit { promptSubmitted() }
+            Button(action: { promptSubmitted() }) {
                 Image(systemName: "paperplane.fill")
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
@@ -27,8 +27,8 @@ where AppViewModel: AppViewModelable {
         }
     }
     
-    private func newPrompt() {
-        appViewModel.newPrompt()
+    private func promptSubmitted() {
+        appViewModel.handlePromptSubmitted()
         promptIsFocused = true
     }
 }

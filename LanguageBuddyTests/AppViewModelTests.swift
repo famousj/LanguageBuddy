@@ -14,7 +14,7 @@ final class AppViewModelTests: XCTestCase {
         testObject?.currentPrompt = String.random
         languageLookup?.lookupPrompt_returnResult = .failureResult
 
-        testObject?.newPrompt()
+        testObject?.handlePromptSubmitted()
         
         try await Task.sleep(for: .SleepDuration)
                 
@@ -54,14 +54,14 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
-    func test_newPrompt_addsNewMessage() async {
+    func test_handlePromptSubmitted_addsNewMessage() async {
         let testObject = AppViewModel(languageLookup: failureLookup)
         
         XCTAssertEqual(testObject.messages.count, 0)
         
         let prompt = String.random
         testObject.currentPrompt = prompt
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         XCTAssertEqual(testObject.messages.count, 1)
         
@@ -70,24 +70,24 @@ final class AppViewModelTests: XCTestCase {
         expectedMessage.assertEqual(to: message)
     }
     
-    func test_newPrompt_clearsCurrentPrompt() async {
+    func test_handlePromptSubmitted_clearsCurrentPrompt() async {
         let testObject = AppViewModel(languageLookup: failureLookup)
         
         testObject.currentPrompt = String.random
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         XCTAssertEqual(testObject.currentPrompt, "")
     }
     
-    func test_newPrompt_whenCurrentPromptIsEmpty_noAction() async throws {
+    func test_handlePromptSubmitted_whenCurrentPromptIsEmpty_noAction() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup)
 
         testObject.currentPrompt = ""
         testObject.isPromptDisabled = false
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         try await Task.sleep(for: .SleepDuration)
         
@@ -96,7 +96,7 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
-    func test_newPrompt_looksUpPrompt() async throws {
+    func test_handlePromptSubmitted_looksUpPrompt() async throws {
         let lookup = FakeLanguageLookup()
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(languageLookup: lookup,
@@ -112,7 +112,7 @@ final class AppViewModelTests: XCTestCase {
         
         lookup.lookupPrompt_returnResult = .failureResult
 
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         try await Task.sleep(for: .SleepDuration)
         
@@ -121,7 +121,7 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(lookup.lookupPrompt_paramPrompt, prompt)
     }
     
-    func test_newPrompt_whenChatFails_displaysError() async throws {
+    func test_handlePromptSubmitted_whenChatFails_displaysError() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup)
 
@@ -136,7 +136,7 @@ final class AppViewModelTests: XCTestCase {
         let expectedError = OpenAIError.serverError(expectedDetails)
         lookup.lookupPrompt_returnResult = .failure(expectedError)
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         try await Task.sleep(for: .SleepDuration)
 
@@ -146,7 +146,7 @@ final class AppViewModelTests: XCTestCase {
                        expectedError.localizedDescription)
     }
     
-    func test_newPrompt_addsSuccessfulMessageToList() async throws {
+    func test_handlePromptSubmitted_addsSuccessfulMessageToList() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup)
 
@@ -156,7 +156,7 @@ final class AppViewModelTests: XCTestCase {
         let newMessage = Message.random
         lookup.lookupPrompt_returnResult = .successResult(message: newMessage)
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         try await Task.sleep(for: .SleepDuration)
         
@@ -164,7 +164,7 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.messages.last, newMessage)
     }
     
-    func test_newPrompt_disablesAndEnablesOnError() async throws {
+    func test_handlePromptSubmitted_disablesAndEnablesOnError() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup)
 
@@ -173,7 +173,7 @@ final class AppViewModelTests: XCTestCase {
 
         lookup.lookupPrompt_returnResult = .failureResult
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
@@ -182,7 +182,7 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isPromptDisabled, false)
     }
     
-    func test_newPrompt_disablesAndEnablesOnSuccess() async throws {
+    func test_handlePromptSubmitted_disablesAndEnablesOnSuccess() async throws {
         let lookup = FakeLanguageLookup()
         let testObject = AppViewModel(languageLookup: lookup)
 
@@ -191,7 +191,7 @@ final class AppViewModelTests: XCTestCase {
 
         lookup.lookupPrompt_returnResult = .successResult(message: emptyMessage)
         
-        testObject.newPrompt()
+        testObject.handlePromptSubmitted()
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         

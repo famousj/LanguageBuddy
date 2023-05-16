@@ -35,7 +35,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
         try? await fileStore.save(userSettings)
     }
     
-    func newPrompt() {
+    func handlePromptSubmitted() {
         guard currentPrompt != "" else { return }
         
         isPromptDisabled = true

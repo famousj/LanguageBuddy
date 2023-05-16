@@ -14,7 +14,7 @@ class FakeAppViewModel: AppViewModelable {
     
     @Published var currentPrompt = "Here's what's on my mind.  Lots and lots.  Plenty of things."
     
-    func newPrompt() {
+    func handlePromptSubmitted() {
         messages.append(Message(role: .user, content: currentPrompt))
         currentPrompt = ""
     }

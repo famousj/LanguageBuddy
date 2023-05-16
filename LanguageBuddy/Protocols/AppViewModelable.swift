@@ -12,10 +12,10 @@ protocol AppViewModelable: ObservableObject {
     var messages: [Message] { get }
     var currentPrompt: String { get set }
     
-    func newPrompt()
-
     func handleViewAppeared() async
     
+    func handlePromptSubmitted()
+
     var editingUserSettings: UserSettings { get set }
     func showEditUserSettings()
     func cancelEditUserSettings()

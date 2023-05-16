@@ -7,7 +7,7 @@ struct ContentView<AppViewModel>: View where AppViewModel: AppViewModelable {
         NavigationStack {
             MessagesView(appViewModel: appViewModel)
                 .task {
-                    await appViewModel.loadUserSettings()
+                    await appViewModel.handleViewAppeared()
                 }
         }
     }

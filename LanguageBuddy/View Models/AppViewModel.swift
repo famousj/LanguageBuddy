@@ -25,9 +25,8 @@ class AppViewModel: ObservableObject, AppViewModelable {
         self.fileStore = fileStore
     }
     
-    func loadUserSettings() async {
-        let userSettings: UserSettings = (try? await fileStore.load()) ??
-        UserSettings.defaultSettings
+    func handleViewAppeared() async {
+        let userSettings: UserSettings = (try? await fileStore.load()) ?? UserSettings.defaultSettings
         await setUserSettings(userSettings)
         await setDisablePrompt(false)
     }

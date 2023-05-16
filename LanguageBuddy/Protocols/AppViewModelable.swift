@@ -7,14 +7,14 @@ protocol AppViewModelable: ObservableObject {
     var isPromptDisabled: Bool { get set }
     var isUserSettingsPresented: Bool { get set }
     
-    var userSettings: UserSettings { get set }
+    var userSettings: UserSettings { get }
     
     var messages: [Message] { get }
     var currentPrompt: String { get set }
     
     func newPrompt()
 
-    func loadUserSettings() async
+    func handleViewAppeared() async
     
     var editingUserSettings: UserSettings { get set }
     func showEditUserSettings()

@@ -1,7 +1,6 @@
 import Foundation
 
 class FakeAppViewModel: AppViewModelable {
-    
     var isPromptDisabled = false
     var isUserSettingsPresented = false
     
@@ -20,8 +19,10 @@ class FakeAppViewModel: AppViewModelable {
         currentPrompt = ""
     }
     
-    func loadUserSettings() async {}
-    
+    func handleViewAppeared() async {
+        try! await Task.sleep(for: Duration.seconds(0.2))
+    }
+
     var editingUserSettings = UserSettings.empty
     
     func showEditUserSettings() {

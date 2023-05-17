@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D803F5582A14C8D100839F17 /* Array+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D803F5572A14C8D100839F17 /* Array+Utilities.swift */; };
 		D813017D2A10F86200542A14 /* LanguageLookupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813017C2A10F86200542A14 /* LanguageLookupable.swift */; };
 		D813017F2A10F8D700542A14 /* LanguageLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813017E2A10F8D700542A14 /* LanguageLookup.swift */; };
 		D81301812A10FD0700542A14 /* FakeLanguageLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81301802A10FD0700542A14 /* FakeLanguageLookup.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D803F5572A14C8D100839F17 /* Array+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utilities.swift"; sourceTree = "<group>"; };
 		D813017C2A10F86200542A14 /* LanguageLookupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLookupable.swift; sourceTree = "<group>"; };
 		D813017E2A10F8D700542A14 /* LanguageLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLookup.swift; sourceTree = "<group>"; };
 		D81301802A10FD0700542A14 /* FakeLanguageLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLanguageLookup.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		D8E51BD72A0911AD000CCEE3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D803F5572A14C8D100839F17 /* Array+Utilities.swift */,
 				D81301852A111A8000542A14 /* ChatRequest+Utilities.swift */,
 				D81C9C222A112DEE001E827B /* ChatResponse+Utilities.swift */,
 				D81301872A111C8200542A14 /* Duration+Utilities.swift */,
@@ -561,6 +564,7 @@
 				D8FCCC382A125F6700C0E834 /* FileStoreTests.swift in Sources */,
 				D8310DEA2A0D974A00AB9FCD /* FakeFileStore.swift in Sources */,
 				D814E8982A0AA1DD00ECCA17 /* MessageCreatorTests.swift in Sources */,
+				D803F5582A14C8D100839F17 /* Array+Utilities.swift in Sources */,
 				D88B49A02A0D038B00C8E223 /* OpenAIErrorResponseTests.swift in Sources */,
 				D814E89A2A0AA2C900ECCA17 /* Message+Utilities.swift in Sources */,
 				D81301862A111A8000542A14 /* ChatRequest+Utilities.swift in Sources */,

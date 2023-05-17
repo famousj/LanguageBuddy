@@ -9,20 +9,21 @@ class FakeFileStore: FileStorable {
         save_calledCount += 1
         save_paramObject = object
         
-        guard let save_error = save_error else { return }        
+        guard let save_error = save_error else { return }
         throw save_error
     }
     
     var load_calledCount = 0
-    var load_returnObject: Any?
-    var load_error: Error?
+    var load_returnObjects = [Any]()
+    var load_errors = [Error?]()
     func load<T: Codable>() async throws -> T? {
         load_calledCount += 1
         
-        if let load_error = load_error {
+        if let load_error = load_errors[safe: load_calledCount-1],
+           let load_error = load_error {
             throw load_error
         }
         
-        return load_returnObject as! T?
+        return load_returnObjects[load_calledCount-1] as! T?
     }
 }

@@ -8,7 +8,7 @@ final class AppViewModelTests: XCTestCase {
         var testObject: AppViewModel? = AppViewModel(languageLookup: languageLookup!,
                                                      fileStore: fileStore!)
 
-        fileStore?.load_returnObject = UserSettings.random
+        fileStore?.load_returnObjects = [UserSettings.random, [Message.random]]
         await testObject?.handleViewAppeared()
 
         testObject?.currentPrompt = String.random
@@ -31,7 +31,7 @@ final class AppViewModelTests: XCTestCase {
         
         let userSettings = UserSettings(language: UUID().uuidString,
                                         model: Model.allCases.randomElement()!)
-        fileStore.load_returnObject = userSettings
+        fileStore.load_returnObjects = [userSettings]
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
@@ -45,7 +45,7 @@ final class AppViewModelTests: XCTestCase {
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(fileStore: fileStore)
         
-        fileStore.load_error = NSError(domain: "", code: 0)
+        fileStore.load_errors = [NSError(domain: "", code: 0)]
         
         await testObject.handleViewAppeared()
         
@@ -222,7 +222,7 @@ final class AppViewModelTests: XCTestCase {
                                       fileStore: fileStore)
         
         let userSettings = UserSettings.random
-        fileStore.load_returnObject = userSettings
+        fileStore.load_returnObjects = [userSettings]
         await testObject.handleViewAppeared()
         
         testObject.editingUserSettings = UserSettings.random
@@ -286,11 +286,5 @@ final class AppViewModelTests: XCTestCase {
         let lookup = FakeLanguageLookup()
         lookup.lookupPrompt_returnResult = .failureResult
         return lookup
-    }
-    
-    private var fileStoreWithSettings: FileStorable {
-        let store = FakeFileStore()
-        store.load_returnObject = UserSettings.random
-        return store
     }
 }

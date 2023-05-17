@@ -8,7 +8,7 @@ final class AppViewModelTests: XCTestCase {
         var testObject: AppViewModel? = AppViewModel(languageLookup: languageLookup!,
                                                      fileStore: fileStore!)
 
-        fileStore?.load_returnObjects = [UserSettings.random, [Message.random]]
+        fileStore?.load_returnObject = UserSettings.random
         await testObject?.handleViewAppeared()
 
         testObject?.currentPrompt = String.random
@@ -29,9 +29,8 @@ final class AppViewModelTests: XCTestCase {
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(fileStore: fileStore)
         
-        let userSettings = UserSettings(language: UUID().uuidString,
-                                        model: Model.allCases.randomElement()!)
-        fileStore.load_returnObjects = [userSettings]
+        let userSettings = UserSettings.random
+        fileStore.load_returnObject = userSettings
         
         XCTAssertEqual(testObject.isPromptDisabled, true)
         
@@ -45,7 +44,7 @@ final class AppViewModelTests: XCTestCase {
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(fileStore: fileStore)
         
-        fileStore.load_errors = [NSError(domain: "", code: 0)]
+        fileStore.load_error = NSError(domain: "", code: 0)
         
         await testObject.handleViewAppeared()
         
@@ -104,7 +103,8 @@ final class AppViewModelTests: XCTestCase {
         
         let language = UUID().uuidString
         let userSettings = UserSettings(language: language,
-                                        model: .gpt3)
+                                        model: .gpt3,
+                                        messageHistory: [])
         testObject.userSettings = userSettings
                 
         let prompt = String.random
@@ -222,7 +222,7 @@ final class AppViewModelTests: XCTestCase {
                                       fileStore: fileStore)
         
         let userSettings = UserSettings.random
-        fileStore.load_returnObjects = [userSettings]
+        fileStore.load_returnObject = userSettings
         await testObject.handleViewAppeared()
         
         testObject.editingUserSettings = UserSettings.random
@@ -256,26 +256,26 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isUserSettingsPresented, false)
     }
     
-    func test_saveHistory_storesTheHistoryToFile() async {
+    func test_handleAppBecameInactive_storesUserSettings() async {
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(fileStore: fileStore)
         
-        let messages = (0...Int.random).map { _ in Message.random }
-        testObject.messages = messages
+        let userSettings = UserSettings.random
+        testObject.userSettings = userSettings
         
-        await testObject.saveHistory()
+        await testObject.handleAppBecameInactive()
         
         XCTAssertEqual(fileStore.save_calledCount, 1)
-        XCTAssertEqual(fileStore.save_paramObject as! [Message], messages)
+        XCTAssertEqual(fileStore.save_paramObject as! UserSettings, userSettings)
     }
     
-    func test_saveHistory_ignoresErrors() async {
+    func test_handleAppBecameInactive_ignoresErrors() async {
         let fileStore = FakeFileStore()
         let testObject = AppViewModel(fileStore: fileStore)
 
         fileStore.save_error = NSError(domain: "", code: 0)
         
-        await testObject.saveHistory()
+        await testObject.handleAppBecameInactive()
     }
     
     private var emptyMessage: Message {

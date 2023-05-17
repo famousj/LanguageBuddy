@@ -3,7 +3,9 @@ import Foundation
 
 extension UserSettings {
     static var random: UserSettings {
-        UserSettings(language: UUID().uuidString,
-                     model: Model.random)
+        let messageHistory = (0...Int.random).map { _ in Message.random }
+        return UserSettings(language: UUID().uuidString,
+                     model: Model.random,
+                     messageHistory: messageHistory)
     }
 }

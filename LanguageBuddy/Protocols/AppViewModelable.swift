@@ -13,7 +13,8 @@ protocol AppViewModelable: ObservableObject {
     var currentPrompt: String { get set }
     
     func handleViewAppeared() async
-    
+    func handleAppBecameInactive() async
+
     func handlePromptSubmitted()
 
     var editingUserSettings: UserSettings { get set }
@@ -21,5 +22,4 @@ protocol AppViewModelable: ObservableObject {
     func cancelEditUserSettings()
     func doneWithEditUserSettings()
     
-    func saveHistory() async
 }

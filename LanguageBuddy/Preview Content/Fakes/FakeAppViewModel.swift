@@ -20,7 +20,7 @@ class FakeAppViewModel: AppViewModelable {
     }
     
     func handleViewAppeared() async {}
-    func saveHistory() async {}
+    func handleAppBecameInactive() async {}
     
 
     var editingUserSettings = UserSettings.empty

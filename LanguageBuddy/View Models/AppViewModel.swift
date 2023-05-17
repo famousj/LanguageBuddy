@@ -2,7 +2,6 @@ import Foundation
 import SwiftUI
 
 class AppViewModel: ObservableObject, AppViewModelable {
-    @Published var messages = [Message]()
     @Published var currentPrompt: String = ""
     
     @Published var showChatError = false
@@ -13,6 +12,10 @@ class AppViewModel: ObservableObject, AppViewModelable {
     
     @Published var userSettings = UserSettings.empty
     @Published var editingUserSettings = UserSettings.empty
+    
+    var messages: [Message] {
+        userSettings.messageHistory
+    }
     
     private let languageLookup: LanguageLookupable
     private let fileStore: FileStorable
@@ -40,7 +43,7 @@ class AppViewModel: ObservableObject, AppViewModelable {
         
         isPromptDisabled = true
         
-        messages.append(Message(role: .user, content: currentPrompt))
+        userSettings.messageHistory.append(Message(role: .user, content: currentPrompt))
 
         let promptToSend = currentPrompt
         Task {
@@ -90,13 +93,15 @@ class AppViewModel: ObservableObject, AppViewModelable {
         isUserSettingsPresented = false
     }
     
-    func saveHistory() async {
-        try? await fileStore.save(messages)
+    func handleAppBecameInactive() async {
+        try? await fileStore.save(userSettings)
     }
     
     @MainActor
     private func addToMessages(message: Message) {
-        messages.append(message)
+        userSettings
+            .messageHistory
+            .append(message)
     }
     
     @MainActor

@@ -19,9 +19,9 @@ class FakeAppViewModel: AppViewModelable {
         currentPrompt = ""
     }
     
-    func handleViewAppeared() async {
-        try! await Task.sleep(for: Duration.seconds(0.2))
-    }
+    func handleViewAppeared() async {}
+    func saveHistory() async {}
+    
 
     var editingUserSettings = UserSettings.empty
     

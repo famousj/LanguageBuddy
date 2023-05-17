@@ -90,6 +90,10 @@ class AppViewModel: ObservableObject, AppViewModelable {
         isUserSettingsPresented = false
     }
     
+    func saveHistory() async {
+        try? await fileStore.save(messages)
+    }
+    
     @MainActor
     private func addToMessages(message: Message) {
         messages.append(message)

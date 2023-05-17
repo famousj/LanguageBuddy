@@ -20,4 +20,6 @@ protocol AppViewModelable: ObservableObject {
     func showEditUserSettings()
     func cancelEditUserSettings()
     func doneWithEditUserSettings()
+    
+    func saveHistory() async
 }

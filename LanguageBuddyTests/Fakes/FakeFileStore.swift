@@ -4,9 +4,13 @@ import Foundation
 class FakeFileStore: FileStorable {
     var save_calledCount = 0
     var save_paramObject: Any?
+    var save_error: Error?
     func save<T: Codable>(_ object: T) async throws {
         save_calledCount += 1
         save_paramObject = object
+        
+        guard let save_error = save_error else { return }        
+        throw save_error
     }
     
     var load_calledCount = 0

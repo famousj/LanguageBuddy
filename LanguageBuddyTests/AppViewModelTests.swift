@@ -256,6 +256,28 @@ final class AppViewModelTests: XCTestCase {
         XCTAssertEqual(testObject.isUserSettingsPresented, false)
     }
     
+    func test_saveHistory_storesTheHistoryToFile() async {
+        let fileStore = FakeFileStore()
+        let testObject = AppViewModel(fileStore: fileStore)
+        
+        let messages = (0...Int.random).map { _ in Message.random }
+        testObject.messages = messages
+        
+        await testObject.saveHistory()
+        
+        XCTAssertEqual(fileStore.save_calledCount, 1)
+        XCTAssertEqual(fileStore.save_paramObject as! [Message], messages)
+    }
+    
+    func test_saveHistory_ignoresErrors() async {
+        let fileStore = FakeFileStore()
+        let testObject = AppViewModel(fileStore: fileStore)
+
+        fileStore.save_error = NSError(domain: "", code: 0)
+        
+        await testObject.saveHistory()
+    }
+    
     private var emptyMessage: Message {
         Message(role: .assistant, content: "")
     }
